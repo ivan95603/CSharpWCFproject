@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,17 @@ using System.ServiceModel.Description;
 
 namespace ProjectServer
 {
+
+
+
     public partial class Form1 : Form
     {
+        void Init()
+        {
+            Korisnik.korisnici.Add(new Korisnik("ivan", "pass"));
+        }
+   
+
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +44,7 @@ namespace ProjectServer
         {
             public void Login(string userName, string password)
             {
-                throw new NotImplementedException();
+                 Debug.WriteLine(Korisnik.proveriLogin(userName, password));
             }
         }
 
@@ -52,7 +62,7 @@ namespace ProjectServer
 
 
 
-
+        /*
         [ServiceContract]
         public interface IJavniServis
         {
@@ -71,16 +81,18 @@ namespace ProjectServer
             }
         }
 
-
+    */
         private void Form1_Load(object sender, EventArgs e)
         {
+            Init();
+            Debug.WriteLine("IVANVNASJVALSKDJLKASJDLKSA");
 
             // Create a WSHttpBinding and set its property values. 
             WSHttpBinding binding = new WSHttpBinding();
             binding.Name = "binding1";
             binding.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
             binding.Security.Mode = SecurityMode.Message;
-            binding.ReliableSession.Enabled = false;
+            binding.ReliableSession.Enabled = true;
             binding.TransactionFlow = false;
             //Specify a base address for the service endpoint. 
             Uri baseAddress = new Uri(@"http://localhost:8732/MeteoServis/OperaterServis");
@@ -96,18 +108,25 @@ namespace ProjectServer
             smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             serviceHost.Description.Behaviors.Add(smb);
 
-
             serviceHost.Open();
 
 
 
 
 
+
+
+
+
+
+
+            /*
+
+
             Uri baseAddress2 = new Uri("http://localhost:8732/MeteoServis/JavniServis");
 
-            
 
-
+        
             // Create the ServiceHost.
             ServiceHost host2 = new ServiceHost(typeof(JavniServis), baseAddress2);
 
@@ -121,7 +140,12 @@ namespace ProjectServer
             // no endpoints are explicitly configured, the runtime will create
             // one endpoint per base address for each service contract implemented
             // by the service.
-            host2.Open();
+            host2.Open();*/
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

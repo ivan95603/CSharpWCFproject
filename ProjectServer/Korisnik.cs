@@ -8,6 +8,21 @@ namespace ProjectServer
 {
     public class Korisnik
     {
+        public static List<Korisnik> korisnici = new List<Korisnik>();
+
+        public static bool proveriLogin(string korIme, string pass)
+        {
+            foreach (var item in korisnici)
+            {
+                if ((item.korisnicko_ime == korIme) && (item.lozinka == pass))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    
+
         string korisnicko_ime;
         string lozinka;
 
