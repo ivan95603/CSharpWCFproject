@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,21 @@ namespace ProjectServer
         string korisnicko_ime;
         int id_popravke;
 
+        List<Popravka> popravke;
+
+
+        public double sumaTroskovaZaAuto()
+        {
+            double suma = 0;
+
+            foreach (var item in popravke)
+            {
+                suma += item.CenaDela;
+            }
+
+            return suma;
+        }
+    }
 
     }
 }
