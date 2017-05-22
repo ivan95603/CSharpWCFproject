@@ -20,12 +20,37 @@ namespace ProjectServer
         }
 
 
-        [ServiceContract]
-        public interface ISistemServis
+        [ServiceContract(SessionMode = SessionMode.Required)]
+        public interface IOperaterServis
         {
             [OperationContract]
-            bool Temperatura(string stanica, double vrednost, DateTime vreme);
+            void Login(string userName, string password);
+           // bool Temperatura(string stanica, double vrednost, DateTime vreme);
         }
+
+
+        [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Single)]
+        public class OperaterServis : IOperaterServis
+        {
+            public void Login(string userName, string password)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         [ServiceContract]
@@ -36,13 +61,6 @@ namespace ProjectServer
         }
 
 
-        public class SistemServis : ISistemServis
-        {
-            public bool Temperatura(string stanica, double vrednost, DateTime vreme)
-            {
-                return true;
-            }
-        }
 
         public class JavniServis : IJavniServis
         {
@@ -57,23 +75,37 @@ namespace ProjectServer
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            Uri baseAddress = new Uri("http://localhost:8732/MeteoServis/SistemServis");
-            Uri baseAddress2 = new Uri("http://localhost:8732/MeteoServis/JavniServis");
+            // Create a WSHttpBinding and set its property values. 
+            WSHttpBinding binding = new WSHttpBinding();
+            binding.Name = "binding1";
+            binding.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
+            binding.Security.Mode = SecurityMode.Message;
+            binding.ReliableSession.Enabled = false;
+            binding.TransactionFlow = false;
+            //Specify a base address for the service endpoint. 
+            Uri baseAddress = new Uri(@"http://localhost:8732/MeteoServis/OperaterServis");
+            // Create a ServiceHost for the CalculatorService type 
+            // and provide it with a base address. 
+            ServiceHost serviceHost = new ServiceHost(typeof(OperaterServis), baseAddress);
+            serviceHost.AddServiceEndpoint(typeof(IOperaterServis), binding, baseAddress);
+            // Open the ServiceHostBase to create listeners 
+            // and start listening for messages. 
 
-            // Create the ServiceHost.
-            ServiceHost host = new ServiceHost(typeof(SistemServis), baseAddress);
-
-            // Enable metadata publishing.
             ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
             smb.HttpGetEnabled = true;
             smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-            host.Description.Behaviors.Add(smb);
+            serviceHost.Description.Behaviors.Add(smb);
 
-            // Open the ServiceHost to start listening for messages. Since
-            // no endpoints are explicitly configured, the runtime will create
-            // one endpoint per base address for each service contract implemented
-            // by the service.
-            host.Open();
+
+            serviceHost.Open();
+
+
+
+
+
+            Uri baseAddress2 = new Uri("http://localhost:8732/MeteoServis/JavniServis");
+
+            
 
 
             // Create the ServiceHost.
