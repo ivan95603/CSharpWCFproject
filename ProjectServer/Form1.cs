@@ -35,16 +35,29 @@ namespace ProjectServer
         {
             [OperationContract]
             void Login(string userName, string password);
-           // bool Temperatura(string stanica, double vrednost, DateTime vreme);
+
+            [OperationContract]
+            bool proveriLogin();
+
         }
 
 
         [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Single)]
         public class OperaterServis : IOperaterServis
         {
+            bool logovan = false;
+
+            public bool proveriLogin()
+            {
+                return logovan;
+            }
+
             public void Login(string userName, string password)
             {
-                 Debug.WriteLine(Korisnik.proveriLogin(userName, password));
+                if (Korisnik.proveriLogin(userName, password))
+                {
+                    logovan = true;    
+                }       
             }
         }
 
