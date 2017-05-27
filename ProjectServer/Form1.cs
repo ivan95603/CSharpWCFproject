@@ -18,9 +18,19 @@ namespace ProjectServer
 
     public partial class Form1 : Form
     {
+
+
         void Init()
         {
             Korisnik.korisnici.Add(new Korisnik("ivan", "pass"));
+
+            List<Popravka> ivanPopravke = new List<Popravka>();
+            ivanPopravke.Add(new Popravka("Remenjaca", 1000));
+            ivanPopravke.Add(new Popravka("Promena ulja", 5000));
+
+            Automobil.listaAutomobila.Add( new Automobil("podaci", status.popravljaSe, "ivan", ivanPopravke) );
+            Debug.WriteLine(Automobil.listaAutomobila[0].sumaTroskovaZaAuto());
+
         }
    
 
@@ -39,6 +49,11 @@ namespace ProjectServer
             [OperationContract]
             bool proveriLogin();
 
+            [OperationContract]
+            double SumaTroskovaNaAutuZaKorisnika();
+
+            [OperationContract]
+            List<status> StatusPopravkiNaAutu();
         }
 
 
@@ -46,6 +61,7 @@ namespace ProjectServer
         public class OperaterServis : IOperaterServis
         {
             bool logovan = false;
+            string korisnickoIme = "";
 
             public bool proveriLogin()
             {
@@ -56,8 +72,28 @@ namespace ProjectServer
             {
                 if (Korisnik.proveriLogin(userName, password))
                 {
-                    logovan = true;    
+                    logovan = true;
+                    korisnickoIme = userName;   
                 }       
+            }
+
+            public double SumaTroskovaNaAutuZaKorisnika()
+            {
+                if (logovan)
+                {
+                   return Automobil.sumaCeneTroskova(korisnickoIme);
+                }
+                return 0;
+            }
+
+            public List<status> StatusPopravkiNaAutu()
+            {
+                if (logovan)
+                {
+                    return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
+                }
+
+                return null;
             }
         }
 

@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProjectServer
 {
-    enum status { nijeStigaoNaRed, popravljaSe, popravljen};
+    public enum status { nijeStigaoNaRed, popravljaSe, popravljen};
 
     class Automobil
     {
+        public static List<Automobil> listaAutomobila = new List<Automobil>();
+
+        static int trenutniID = 0;
+
         static int trenutniIdPopravke = 0;
 
         int id_automobil;
@@ -19,6 +23,7 @@ namespace ProjectServer
         double cena_popravke;
         string korisnicko_ime;
         int id_popravke;
+        double sumaTroskovaNaAutu;
 
         List<Popravka> popravke;
 
@@ -31,8 +36,65 @@ namespace ProjectServer
             {
                 suma += item.CenaDela;
             }
+            sumaTroskovaNaAutu = suma;
 
             return suma;
+        }
+
+        public static List<status> stanjaPopravkaNaKolima(string username)
+        {
+            List<status> temp = new List<status>();
+
+            foreach (var VARIABLE in Automobil.listaAutomobila)
+            {
+                if (VARIABLE.korisnicko_ime == username)
+                {
+                    temp.Add(VARIABLE.statusPopravke);
+                }
+            }
+
+            return temp;
+        }
+
+        public static double sumaCeneTroskova(string username)
+        {
+            double sum = 0;
+
+            foreach (var VARIABLE in Automobil.listaAutomobila)
+            {
+                if (VARIABLE.korisnicko_ime == username)
+                {
+                    sum += VARIABLE.sumaTroskovaNaAutu;
+                }
+            }
+
+            return sum;
+        }
+
+
+
+        public Automobil(string podaci, status statusPopravke, string korisnickoIme, List<Popravka> popravke)
+        { 
+            try
+            {
+                if (podaci == null) throw new ArgumentNullException(nameof(podaci));
+                if ((korisnickoIme == null) ||  !(Korisnik.ProveriDaLiPostojiKorisnik(korisnickoIme))  ) throw new ArgumentNullException(nameof(korisnickoIme));
+                if (popravke == null) throw new ArgumentNullException(nameof(popravke));
+               this.id_automobil = trenutniID;
+                trenutniID++;
+                this.podaci = podaci;
+                this.statusPopravke = statusPopravke;
+                korisnicko_ime = korisnickoIme;
+                id_popravke = trenutniIdPopravke;
+                trenutniIdPopravke++;
+                this.popravke = popravke;
+                sumaTroskovaZaAuto();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
