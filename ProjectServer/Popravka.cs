@@ -23,6 +23,8 @@ namespace ProjectServer
             cena_dela = cenaDela;
         }
 
+
+
         public double CenaDela => cena_dela;
     }
 }
