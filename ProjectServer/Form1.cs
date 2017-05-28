@@ -44,7 +44,7 @@ namespace ProjectServer
         public interface IOperaterServis
         {
             [OperationContract]
-            void Login(string userName, string password);
+            bool Login(string userName, string password);
 
             [OperationContract]
             bool proveriLogin();
@@ -68,13 +68,15 @@ namespace ProjectServer
                 return logovan;
             }
 
-            public void Login(string userName, string password)
+            public bool Login(string userName, string password)
             {
                 if (Korisnik.proveriLogin(userName, password))
                 {
                     logovan = true;
-                    korisnickoIme = userName;   
-                }       
+                    korisnickoIme = userName;
+                    return true;
+                }
+                return false;
             }
 
             public double SumaTroskovaNaAutuZaKorisnika()

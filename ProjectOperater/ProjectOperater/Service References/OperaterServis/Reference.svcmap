@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="12efb677-4b19-4a16-ba10-1f1db6d2ba12" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8732/MeteoServis/OperaterServis" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OperaterServis.xsd" MetadataType="Schema" ID="2e08bad2-fe77-4702-bb7d-a48e0cb99280" SourceId="1" SourceUrl="http://localhost:8732/MeteoServis/OperaterServis?xsd=xsd2" />
+    <MetadataFile FileName="OperaterServis1.xsd" MetadataType="Schema" ID="e4c3d7d1-d52c-4a5a-8368-1c7089ea9e0e" SourceId="1" SourceUrl="http://localhost:8732/MeteoServis/OperaterServis?xsd=xsd0" />
+    <MetadataFile FileName="OperaterServis.disco" MetadataType="Disco" ID="93a1924f-a0b1-4a76-b895-1479c27ef1be" SourceId="1" SourceUrl="http://localhost:8732/MeteoServis/OperaterServis?disco" />
+    <MetadataFile FileName="OperaterServis.wsdl" MetadataType="Wsdl" ID="4e3f2aac-d05b-4d12-b1b0-b22ca091c6e6" SourceId="1" SourceUrl="http://localhost:8732/MeteoServis/OperaterServis?wsdl" />
+    <MetadataFile FileName="OperaterServis2.xsd" MetadataType="Schema" ID="7c114e35-c8bf-42a6-8083-7fd7e6c77bd1" SourceId="1" SourceUrl="http://localhost:8732/MeteoServis/OperaterServis?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

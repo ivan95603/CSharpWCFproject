@@ -16,5 +16,12 @@ namespace ProjectOperater
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            OperaterServis.OperaterServisClient servis = new OperaterServis.OperaterServisClient();
+            /*textBox1.Text = */servis.Login("ivan", "pass");//   ProsecneTemperature(textNazivStanice.Text, dateTimePicker1.Value, dateTimePicker2.Value).ToString();
+
+        }
     }
 }
