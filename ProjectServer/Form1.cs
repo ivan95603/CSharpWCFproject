@@ -62,6 +62,11 @@ namespace ProjectServer
 
             [OperationContract]
             List<status> StatusPopravkiNaAutu();
+
+            [OperationContract]
+            List<Deo> PovuciDelove();
+
+
         }
 
 
@@ -104,6 +109,11 @@ namespace ProjectServer
                 }
 
                 return null;
+            }
+
+            public List<Deo> PovuciDelove()
+            {
+                return ProjectLibrary.Deo.lagerDelova;
             }
         }
 
