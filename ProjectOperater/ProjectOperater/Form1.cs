@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,25 @@ namespace ProjectOperater
 {
     public partial class Form1 : Form
     {
+        OperaterServis.OperaterServisClient servis;
+
         public Form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {    
+            
+
+        }
+
+        private void butLogin_Click(object sender, EventArgs e)
         {
-            OperaterServis.OperaterServisClient servis = new OperaterServis.OperaterServisClient();
-            /*textBox1.Text = */servis.Login("ivan", "pass");//   ProsecneTemperature(textNazivStanice.Text, dateTimePicker1.Value, dateTimePicker2.Value).ToString();
+            servis = new OperaterServis.OperaterServisClient();
+            Debug.WriteLine(servis.Login("ivan", "pass"));
+
+            Debug.WriteLine(servis.StatusPopravkiNaAutu());
 
         }
     }
