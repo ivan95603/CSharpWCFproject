@@ -9,7 +9,7 @@ namespace ProjectServer
 {
     public enum status { nijeStigaoNaRed, popravljaSe, popravljen};
 
-    class Automobil
+    public class Automobil
     {
         public static List<Automobil> listaAutomobila = new List<Automobil>();
 
