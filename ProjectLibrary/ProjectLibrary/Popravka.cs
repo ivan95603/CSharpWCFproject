@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectServer
 {
-    class Popravka
+    public class Popravka
     {
         static int trenutniIDPopravke = 0;
 
