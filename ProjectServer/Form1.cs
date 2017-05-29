@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using ProjectLibrary;
 
 namespace ProjectServer
 {
@@ -24,9 +25,16 @@ namespace ProjectServer
         {
             Korisnik.korisnici.Add(new Korisnik("ivan", "pass"));
 
+            ProjectLibrary.Deo.DodajDeo(new Deo("Remenjaca", 10000));
+            ProjectLibrary.Deo.DodajDeo(new Deo("Kais", 5000));
+
+
+
             List<Popravka> ivanPopravke = new List<Popravka>();
-            ivanPopravke.Add(new Popravka("Remenjaca", 1000));
-            ivanPopravke.Add(new Popravka("Promena ulja", 5000));
+            ivanPopravke.Add(new Popravka());
+            ivanPopravke[0].DodajDeoUPopravku("Remenjaca");
+            ivanPopravke[0].DodajDeoUPopravku("Kais");
+
 
             Automobil.listaAutomobila.Add( new Automobil("podaci", status.popravljaSe, "ivan", ivanPopravke) );
             Debug.WriteLine(Automobil.listaAutomobila[0].sumaTroskovaZaAuto());

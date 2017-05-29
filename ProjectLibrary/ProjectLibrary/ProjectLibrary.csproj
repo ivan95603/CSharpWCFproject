@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automobil.cs" />
+    <Compile Include="Deo.cs" />
     <Compile Include="Korisnik.cs" />
     <Compile Include="Popravka.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

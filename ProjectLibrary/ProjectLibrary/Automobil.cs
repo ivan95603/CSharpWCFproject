@@ -34,7 +34,7 @@ namespace ProjectServer
 
             foreach (var item in popravke)
             {
-                suma += item.CenaDela;
+                suma += item.CenaPopravke();
             }
             sumaTroskovaNaAutu = suma;
 

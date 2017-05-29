@@ -33,6 +33,7 @@
             this.butLogin = new System.Windows.Forms.Button();
             this.textUserName = new System.Windows.Forms.TextBox();
             this.maskedPassword = new System.Windows.Forms.MaskedTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -79,11 +80,20 @@
             this.maskedPassword.Size = new System.Drawing.Size(100, 20);
             this.maskedPassword.TabIndex = 4;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 33);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(469, 316);
+            this.listBox1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 364);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.maskedPassword);
             this.Controls.Add(this.textUserName);
             this.Controls.Add(this.butLogin);
@@ -104,6 +114,7 @@
         private System.Windows.Forms.Button butLogin;
         private System.Windows.Forms.TextBox textUserName;
         private System.Windows.Forms.MaskedTextBox maskedPassword;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

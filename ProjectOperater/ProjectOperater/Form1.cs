@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectServer;
 
 namespace ProjectOperater
 {
@@ -31,7 +32,15 @@ namespace ProjectOperater
             servis = new OperaterServis.OperaterServisClient();
             Debug.WriteLine(servis.Login("ivan", "pass"));
 
-            Debug.WriteLine(servis.StatusPopravkiNaAutu());
+            List<ProjectOperater.OperaterServis.status> popravkeList = servis.StatusPopravkiNaAutu().ToList();
+            double cenaTroskova = servis.SumaTroskovaNaAutuZaKorisnika();
+
+
+            foreach (var VARIABLE in popravkeList)
+            {
+                listBox1.Items.Add("Status popravke: " + VARIABLE.ToString());
+            }
+            listBox1.Items.Add("Ukupni troskovi za auto: " + cenaTroskova.ToString());
 
         }
     }

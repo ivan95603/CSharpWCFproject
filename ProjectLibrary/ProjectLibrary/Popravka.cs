@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectLibrary;
 
 namespace ProjectServer
 {
@@ -11,20 +12,79 @@ namespace ProjectServer
         static int trenutniIDPopravke = 0;
 
         int id_popravke;
-        string deo;
-        double cena_dela;
+        List<int> deloviIDs = new List<int>();
+        List<Deo> delovi = new List<Deo>();
 
-        public Popravka(string deo, double cenaDela)
+        public Popravka()
         {
-            if (deo == null) throw new ArgumentNullException(nameof(deo));
             id_popravke = trenutniIDPopravke;
             trenutniIDPopravke++;
-            this.deo = deo;
-            cena_dela = cenaDela;
+        }
+
+        public double CenaPopravke()
+        {
+            double sum = 0;
+
+            foreach (var item in deloviIDs)
+            {
+                foreach (var item2 in ProjectLibrary.Deo.lagerDelova)
+                {
+                    if (item == item2.id)
+                    {
+                        sum += item2.cena_dela;
+                    }
+                }
+            }
+            return sum;
+        }
+
+        public bool DodajDeoUPopravku(string naziv)
+        {
+            try
+            {
+                foreach (var VARIABLE in Deo.lagerDelova)
+                {
+                    if (VARIABLE.nazivDela == naziv)
+                    {
+                        delovi.Add(VARIABLE);
+                        deloviIDs.Add(VARIABLE.id);
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return false;
+        }
+
+        public bool DodajDeoUPopravku(int id)
+        {
+            try
+            {
+                deloviIDs.Add(id);
+                delovi = new List<Deo>();
+                foreach (var VARIABLE in Deo.lagerDelova)
+                {
+                    if (VARIABLE.id == id)
+                    {
+                        delovi.Add(VARIABLE);
+                        return true;
+                    }
+                }
+               
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return false;
         }
 
 
 
-        public double CenaDela => cena_dela;
     }
 }
