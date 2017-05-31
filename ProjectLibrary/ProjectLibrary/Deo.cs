@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectLibrary
 {
+    [CollectionDataContract]
     public class Deo
     {
         public static List<Deo> lagerDelova = new List<Deo>();

@@ -62,13 +62,13 @@ namespace ProjectServer
             /***
              * Imam problem sa ovim mora da se podesi nesto za searializovanje liste kao [CollectionDataContract] samo sto je ovaj za klasu ili struct
              * */
-            /*
+            
                        [OperationContract]
                        List<status> StatusPopravkiNaAutu();
 
                        [OperationContract]
                        List<Deo> PovuciDelove();
-           */
+           
 
         }
 
@@ -108,7 +108,7 @@ namespace ProjectServer
            * Imam problem sa ovim mora da se podesi nesto za searializovanje liste kao [CollectionDataContract] samo sto je ovaj za klasu ili struct
            * */
        
-            /*
+            
                         public List<status> StatusPopravkiNaAutu()
                         {
                             if (logovan)
@@ -124,7 +124,7 @@ namespace ProjectServer
                             return ProjectLibrary.Deo.lagerDelova;
                         }
 
-             */
+             
         }
 
 

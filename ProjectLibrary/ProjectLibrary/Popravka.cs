@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectLibrary;
 
 namespace ProjectServer
 {
+    [CollectionDataContract]
     public class Popravka
     {
         static int trenutniIDPopravke = 0;

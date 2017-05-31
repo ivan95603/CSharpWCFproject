@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace ProjectServer
 {
     public enum status { nijeStigaoNaRed, popravljaSe, popravljen};
 
+    [CollectionDataContract]
     public class Automobil
     {
         public static List<Automobil> listaAutomobila = new List<Automobil>();
