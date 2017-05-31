@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProjectServer
 {
+
+    [DataContract()]
     public enum status { nijeStigaoNaRed, popravljaSe, popravljen};
 
     [CollectionDataContract]

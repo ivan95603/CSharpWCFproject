@@ -7,17 +7,26 @@ using System.Threading.Tasks;
 
 namespace ProjectLibrary
 {
+    [Serializable]
+    [DataContract]
     [CollectionDataContract]
     public class Deo
     {
+        
+        [DataMember]
         public static List<Deo> lagerDelova = new List<Deo>();
 
+        [DataMember]
         static int deoID = 0;
 
+        [DataMember]
         public int id;
+        [DataMember]
         public string nazivDela;
+        [DataMember]
         public double cena_dela;
 
+       
         public Deo(string nazivDela, double cenaDela)
         {
             if (nazivDela == null) throw new ArgumentNullException(nameof(nazivDela));
@@ -34,7 +43,6 @@ namespace ProjectLibrary
             this.nazivDela = nazivDela;
             cena_dela = cenaDela;
         }
-
 
         public static bool DodajDeo(Deo ulaz)
         {
