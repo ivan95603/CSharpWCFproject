@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProjectLibrary
 {
-    [CollectionDataContract]
+    [DataContract]
     public class Korisnik
     {
+        [DataMember]
         public static List<Korisnik> korisnici = new List<Korisnik>();
 
+        [DataMember]
         public List<Automobil> Automobili = new List<Automobil>();
 
         
@@ -41,9 +43,12 @@ namespace ProjectLibrary
             return false;
         }
 
-
+        [DataMember]
         string korisnicko_ime;
+        [DataMember]
         string lozinka;
+
+        
 
         public Korisnik(string korisnickoIme, string lozinka)
         {

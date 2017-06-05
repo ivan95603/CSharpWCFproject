@@ -11,20 +11,35 @@ namespace ProjectLibrary
 {
 
 
-    [CollectionDataContract]
+    [DataContract]
     public class Automobil
     {
+        [DataMember]
         public List<Popravka> popravke = new List<Popravka>();
 
+        [DataMember]
         static int trenutniID = 0;
 
+        [DataMember]
         static int trenutniIdPopravke = 0;
 
+
+
+        [DataMember]
         int id_automobil;
+        [DataMember]
         string podaci;
 
+
+
+
+        [DataMember]
         double cena_popravke;
+
+
+        [DataMember]
         int id_popravke;
+        [DataMember]
         double sumaTroskovaNaAutu;
 
         //List<Popravka> popravke;
@@ -32,6 +47,7 @@ namespace ProjectLibrary
 
         public double sumaTroskovaZaAuto()
         {
+           
             double suma = 0;
 
             foreach (var item in popravke)
@@ -67,7 +83,6 @@ namespace ProjectLibrary
                     sum += VARIABLE.CenaPopravke();
                 
             }
-
             return sum;
         }
 

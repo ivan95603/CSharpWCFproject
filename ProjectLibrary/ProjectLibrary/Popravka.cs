@@ -19,16 +19,22 @@ namespace ProjectLibrary
         popravljen
     };
 
-    [CollectionDataContract]
+    [DataContract]
     public class Popravka
     {
+        [DataMember]
         public List<Deo> deloviZaPoravku = new List<Deo>();
 
+        [DataMember]
         static int trenutniIDPopravke = 0;
+        [DataMember]
         public status statusPopravke;
 
+        [DataMember]
         public int id_popravke;
+        [DataMember]
         List<int> deloviIDs = new List<int>();
+        [DataMember]
         List<Deo> delovi = new List<Deo>();
 
         public Popravka(status statusPopravke, List<Deo> deloviZaPopravke)

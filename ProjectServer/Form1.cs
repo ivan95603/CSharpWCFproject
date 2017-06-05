@@ -83,7 +83,7 @@ namespace ProjectServer
             */
 
             [OperationContract]
-            ListaDeo PovuciKorisnike();
+            List<Korisnik> PovuciKorisnike();
 
 
 
@@ -155,9 +155,9 @@ namespace ProjectServer
              *
              */
 
-            public ListaDeo PovuciKorisnike()
+            public List<Korisnik> PovuciKorisnike()
             {
-                throw new NotImplementedException();
+                return Korisnik.korisnici;
             }
         }
 
@@ -192,8 +192,15 @@ namespace ProjectServer
               smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
               serviceHost.Description.Behaviors.Add(smb);
 
-              // Add MEX endpoint
-              serviceHost.AddServiceEndpoint(
+
+            serviceHost.Description.Behaviors.Remove(
+                typeof(ServiceDebugBehavior));
+            serviceHost.Description.Behaviors.Add(
+                new ServiceDebugBehavior { IncludeExceptionDetailInFaults = true });
+
+
+            // Add MEX endpoint
+            serviceHost.AddServiceEndpoint(
                   ServiceMetadataBehavior.MexContractName,
                   MetadataExchangeBindings.CreateMexHttpBinding(),
                   "mex"

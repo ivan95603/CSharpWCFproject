@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,6 +16,7 @@ namespace ProjectLibrary
         [DataMember]
         public static List<Deo> lagerDelova = new List<Deo>();
         */
+        [DataMember]
         public static ListaDeo lagerDelova = new ListaDeo();
 
 
@@ -28,7 +30,6 @@ namespace ProjectLibrary
         [DataMember]
         public double cena_dela;
 
-       
         public Deo(string nazivDela, double cenaDela)
         {
             if (nazivDela == null) throw new ArgumentNullException(nameof(nazivDela));

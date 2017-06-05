@@ -17,6 +17,7 @@ namespace ProjectOperater
     {
         OperaterServis.OperaterServisClient servis = new OperaterServis.OperaterServisClient();
         List<Deo> DeloviPovuceni;
+        List<Korisnik> KorisniciPovuceni;
         public Form1()
         {
             InitializeComponent();
@@ -61,8 +62,27 @@ namespace ProjectOperater
                     listBox2.Items.Add(VARIABLE.nazivDela);
                     Debug.WriteLine(VARIABLE.nazivDela);
                 }
-
             }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                if (!servis.proveriLogin())
+                {
+                    servis.Login("ivan", "pass");
+                }
+
+ //               KorisniciPovuceni = servis.PovuciKorisnike();
+                foreach (var VARIABLE in DeloviPovuceni)
+                {
+                    listBox2.Items.Add(VARIABLE.nazivDela);
+                    Debug.WriteLine(VARIABLE.nazivDela);
+                }
+            }
+
+
+
+
+
+
         }
 
         private void Delovi_Click(object sender, EventArgs e)

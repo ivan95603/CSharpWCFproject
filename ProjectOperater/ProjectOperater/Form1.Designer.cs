@@ -37,18 +37,17 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Delovi = new System.Windows.Forms.TabPage();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.Korisnici = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.Izmena = new System.Windows.Forms.TabPage();
-            this.Dodavanje = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,11 +56,12 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.Dodavanje = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Delovi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.Korisnici.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.Izmena.SuspendLayout();
@@ -163,26 +163,41 @@
             this.Delovi.UseVisualStyleBackColor = true;
             this.Delovi.Click += new System.EventHandler(this.Delovi_Click);
             // 
-            // listBox2
+            // button1
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(6, 6);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(192, 225);
-            this.listBox2.TabIndex = 0;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.button1.Location = new System.Drawing.Point(358, 176);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Sacuvaj";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // numericUpDown1
+            // textBox1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(358, 111);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1661992959,
-            1808227885,
-            5,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 1;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(358, 48);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(294, 51);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Naziv dela:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(294, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "ID Dela";
             // 
             // label3
             // 
@@ -206,41 +221,26 @@
             this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown2.TabIndex = 1;
             // 
-            // label4
+            // numericUpDown1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(294, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "ID Dela";
+            this.numericUpDown1.Location = new System.Drawing.Point(358, 111);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1661992959,
+            1808227885,
+            5,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 1;
             // 
-            // label5
+            // listBox2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(294, 51);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Naziv dela:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(358, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(358, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Sacuvaj";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(6, 6);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(192, 225);
+            this.listBox2.TabIndex = 0;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // Korisnici
             // 
@@ -279,16 +279,6 @@
             this.Izmena.TabIndex = 0;
             this.Izmena.Text = "Izmena";
             this.Izmena.UseVisualStyleBackColor = true;
-            // 
-            // Dodavanje
-            // 
-            this.Dodavanje.Location = new System.Drawing.Point(4, 22);
-            this.Dodavanje.Name = "Dodavanje";
-            this.Dodavanje.Padding = new System.Windows.Forms.Padding(3);
-            this.Dodavanje.Size = new System.Drawing.Size(574, 423);
-            this.Dodavanje.TabIndex = 1;
-            this.Dodavanje.Text = "Dodavanje";
-            this.Dodavanje.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -367,6 +357,16 @@
             this.listBox3.Size = new System.Drawing.Size(192, 225);
             this.listBox3.TabIndex = 6;
             // 
+            // Dodavanje
+            // 
+            this.Dodavanje.Location = new System.Drawing.Point(4, 22);
+            this.Dodavanje.Name = "Dodavanje";
+            this.Dodavanje.Padding = new System.Windows.Forms.Padding(3);
+            this.Dodavanje.Size = new System.Drawing.Size(574, 423);
+            this.Dodavanje.TabIndex = 1;
+            this.Dodavanje.Text = "Dodavanje";
+            this.Dodavanje.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,8 +385,8 @@
             this.tabPage1.ResumeLayout(false);
             this.Delovi.ResumeLayout(false);
             this.Delovi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.Korisnici.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.Izmena.ResumeLayout(false);

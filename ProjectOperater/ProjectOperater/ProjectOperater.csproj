@@ -73,6 +73,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ProjectLibrary.Korisnik.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +94,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OperaterServis\OperaterServis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OperaterServis\OperaterServis4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OperaterServis\ProjectOperater.OperaterServis.ListaDeo.datasource">

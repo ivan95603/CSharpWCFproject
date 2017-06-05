@@ -418,6 +418,7 @@
       <xsd:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary" />
       <xsd:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
+      <xsd:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOperaterServis_Login_InputMessage">
