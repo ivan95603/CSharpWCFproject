@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectLibrary;
 
 namespace ProjectLibrary
 {
@@ -58,9 +59,31 @@ namespace ProjectLibrary
                 throw;
             }
         }
+
+        public void PromeniCenuDela(double cena)
+        {
+            this.cena_dela = cena;
+        }
+
+        public static bool PromeniCenuDelaZaId(int ID, double Cena)
+        {
+            foreach (var VARIABLE in lagerDelova)
+            {
+                if (VARIABLE.id == ID)
+                {
+                    VARIABLE.PromeniCenuDela(Cena);
+                    return true;
+                }
+            }
+            return false;
+            
+        }
+    }
+
+
     }
     [CollectionDataContract]
     public class ListaDeo:List<Deo>
-    { }
+    {
 
-}
+    }

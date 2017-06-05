@@ -14,12 +14,6 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="status" nillable="true" type="tns:status" />
-  <xs:complexType name="ListaDeo">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Deo" nillable="true" type="tns:Deo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ListaDeo" nillable="true" type="tns:ListaDeo" />
   <xs:complexType name="Deo">
     <xs:sequence>
       <xs:element minOccurs="0" name="cena_dela" type="xs:double" />

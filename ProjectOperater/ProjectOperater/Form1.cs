@@ -15,8 +15,8 @@ namespace ProjectOperater
 {
     public partial class Form1 : Form
     {
-        OperaterServis.OperaterServisClient servis;
-
+        OperaterServis.OperaterServisClient servis = new OperaterServis.OperaterServisClient();
+        List<Deo> DeloviPovuceni;
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace ProjectOperater
 
         private void butLogin_Click(object sender, EventArgs e)
         {
-            servis = new OperaterServis.OperaterServisClient();
+            
             Debug.WriteLine(servis.Login("ivan", "pass"));
 
             List<status> popravkeList = /*servis.StatusPopravkiNaAutu();*/ servis.StatusPopravkiNaAutu().ToList();
@@ -43,6 +43,56 @@ namespace ProjectOperater
             }
             listBox1.Items.Add("Ukupni troskovi za auto: " + cenaTroskova.ToString());
 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // Debug.WriteLine(tabControl1.SelectedIndex);
+            if (tabControl1.SelectedIndex == 1)
+            {
+                if (!servis.proveriLogin())
+                {
+                    servis.Login("ivan", "pass");
+                }
+
+                 DeloviPovuceni = servis.PovuciDelove();
+                foreach (var VARIABLE in DeloviPovuceni)
+                {
+                    listBox2.Items.Add(VARIABLE.nazivDela);
+                    Debug.WriteLine(VARIABLE.nazivDela);
+                }
+
+            }
+        }
+
+        private void Delovi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var VARIABLE in DeloviPovuceni)
+            {
+                if (VARIABLE.nazivDela == listBox2.SelectedItem.ToString())
+                {
+                    textBox1.Text = VARIABLE.nazivDela;
+                    numericUpDown1.Text = VARIABLE.cena_dela.ToString();
+                    numericUpDown2.Text = VARIABLE.id.ToString();
+
+                }
+            }
+            DeloviPovuceni = servis.PovuciDelove();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int ID = (int)numericUpDown2.Value;
+            double Cena = (Double)numericUpDown1.Value;
+            servis.PromeniCenuZaIDOdDeo(ID, Cena);
+            DeloviPovuceni = servis.PovuciDelove();
+            int a = 2;
         }
     }
 }

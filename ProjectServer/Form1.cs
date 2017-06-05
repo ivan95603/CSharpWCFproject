@@ -59,17 +59,33 @@ namespace ProjectServer
 
             [OperationContract]
             double SumaTroskovaNaAutuZaKorisnika();
-            /***
-             * Imam problem sa ovim mora da se podesi nesto za searializovanje liste kao [CollectionDataContract] samo sto je ovaj za klasu ili struct
-             * */
-            
-                       [OperationContract]
-                       List<status> StatusPopravkiNaAutu();
+   
+            [OperationContract]
+            List<status> StatusPopravkiNaAutu();
 
-            
-                        [OperationContract]
-                        ListaDeo PovuciDelove();
-           
+
+            /**
+            * 
+            * Funkcije za delove
+            * 
+            */
+
+            [OperationContract]
+            ListaDeo PovuciDelove();
+
+            [OperationContract]
+            bool PromeniCenuZaIDOdDeo(int ID, double Cena);
+
+            /**
+            * 
+            * Funkcije za Korisnike
+            *
+            */
+
+            [OperationContract]
+            ListaDeo PovuciKorisnike();
+
+
 
         }
 
@@ -104,28 +120,44 @@ namespace ProjectServer
                 }
                 return 0;
             }
-
-            /***
-           * Imam problem sa ovim mora da se podesi nesto za searializovanje liste kao [CollectionDataContract] samo sto je ovaj za klasu ili struct
-           * */
-       
             
-                        public List<status> StatusPopravkiNaAutu()
-                        {
-                            if (logovan)
-                            {
-                                return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
-                            }
-                            return null;
-                        }
+            public List<status> StatusPopravkiNaAutu()
+            {
+                 if (logovan)
+                 {
+                    return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
+                 }
+                 return null;
+            }
+
+
+            /**
+             * 
+             * Funkcije za delove
+             * 
+             */
 
           
-                        public ListaDeo PovuciDelove()
-                        {
-                            return ProjectLibrary.Deo.lagerDelova;
-                        }
+            public ListaDeo PovuciDelove()
+            {
+                 return ProjectLibrary.Deo.lagerDelova;
+            }
 
-             
+            public bool PromeniCenuZaIDOdDeo(int ID, double Cena)
+            {
+                return Deo.PromeniCenuDelaZaId(ID, Cena);
+            }
+
+
+            /**
+             * 
+             * Funkcije za Korisnike
+             *
+             */
+
+
+
+
         }
 
 

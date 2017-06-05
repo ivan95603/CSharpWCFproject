@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary" />
+  <xs:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
   <xs:element name="Login">
     <xs:complexType>
       <xs:sequence>
@@ -60,7 +61,22 @@
   <xs:element name="PovuciDeloveResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ProjectLibrary" minOccurs="0" name="PovuciDeloveResult" nillable="true" type="q2:ListaDeo" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="PovuciDeloveResult" nillable="true" type="q2:ListaDeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PromeniCenuZaIDOdDeo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="Cena" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PromeniCenuZaIDOdDeoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PromeniCenuZaIDOdDeoResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -15,7 +15,7 @@ namespace ProjectOperater.OperaterServis {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ListaDeo", Namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary", ItemName="Deo")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ListaDeo", Namespace="http://schemas.datacontract.org/2004/07/", ItemName="Deo")]
     [System.SerializableAttribute()]
     public class ListaDeo : System.Collections.Generic.List<ProjectLibrary.Deo> {
     }
@@ -53,6 +53,12 @@ namespace ProjectOperater.OperaterServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciDelove", ReplyAction="http://tempuri.org/IOperaterServis/PovuciDeloveResponse")]
         System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ListaDeo> PovuciDeloveAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PromeniCenuZaIDOdDeo", ReplyAction="http://tempuri.org/IOperaterServis/PromeniCenuZaIDOdDeoResponse")]
+        bool PromeniCenuZaIDOdDeo(int ID, double Cena);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PromeniCenuZaIDOdDeo", ReplyAction="http://tempuri.org/IOperaterServis/PromeniCenuZaIDOdDeoResponse")]
+        System.Threading.Tasks.Task<bool> PromeniCenuZaIDOdDeoAsync(int ID, double Cena);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -120,6 +126,14 @@ namespace ProjectOperater.OperaterServis {
         
         public System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ListaDeo> PovuciDeloveAsync() {
             return base.Channel.PovuciDeloveAsync();
+        }
+        
+        public bool PromeniCenuZaIDOdDeo(int ID, double Cena) {
+            return base.Channel.PromeniCenuZaIDOdDeo(ID, Cena);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PromeniCenuZaIDOdDeoAsync(int ID, double Cena) {
+            return base.Channel.PromeniCenuZaIDOdDeoAsync(ID, Cena);
         }
     }
 }
