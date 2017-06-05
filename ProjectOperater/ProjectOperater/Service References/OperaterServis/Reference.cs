@@ -15,13 +15,6 @@ namespace ProjectOperater.OperaterServis {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfstatus", Namespace="http://schemas.datacontract.org/2004/07/ProjectServer", ItemName="status")]
-    [System.SerializableAttribute()]
-    public class ArrayOfstatus : System.Collections.Generic.List<ProjectLibrary.status> {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ListaDeo", Namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary", ItemName="Deo")]
     [System.SerializableAttribute()]
     public class ListaDeo : System.Collections.Generic.List<ProjectLibrary.Deo> {
@@ -50,10 +43,10 @@ namespace ProjectOperater.OperaterServis {
         System.Threading.Tasks.Task<double> SumaTroskovaNaAutuZaKorisnikaAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutu", ReplyAction="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutuResponse")]
-        ProjectOperater.OperaterServis.ArrayOfstatus StatusPopravkiNaAutu();
+        ProjectLibrary.status[] StatusPopravkiNaAutu();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutu", ReplyAction="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutuResponse")]
-        System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ArrayOfstatus> StatusPopravkiNaAutuAsync();
+        System.Threading.Tasks.Task<ProjectLibrary.status[]> StatusPopravkiNaAutuAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciDelove", ReplyAction="http://tempuri.org/IOperaterServis/PovuciDeloveResponse")]
         ProjectOperater.OperaterServis.ListaDeo PovuciDelove();
@@ -113,11 +106,11 @@ namespace ProjectOperater.OperaterServis {
             return base.Channel.SumaTroskovaNaAutuZaKorisnikaAsync();
         }
         
-        public ProjectOperater.OperaterServis.ArrayOfstatus StatusPopravkiNaAutu() {
+        public ProjectLibrary.status[] StatusPopravkiNaAutu() {
             return base.Channel.StatusPopravkiNaAutu();
         }
         
-        public System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ArrayOfstatus> StatusPopravkiNaAutuAsync() {
+        public System.Threading.Tasks.Task<ProjectLibrary.status[]> StatusPopravkiNaAutuAsync() {
             return base.Channel.StatusPopravkiNaAutuAsync();
         }
         

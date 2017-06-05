@@ -86,17 +86,11 @@
     <None Include="Service References\OperaterServis\OperaterServis.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OperaterServis\OperaterServis1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\OperaterServis\OperaterServis2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OperaterServis\OperaterServis3.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OperaterServis\ProjectOperater.OperaterServis.ArrayOfstatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\OperaterServis\ProjectOperater.OperaterServis.ListaDeo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

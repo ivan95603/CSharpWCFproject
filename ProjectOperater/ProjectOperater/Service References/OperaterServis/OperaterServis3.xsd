@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProjectServer" />
-  <xs:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary" />
+  <xs:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary" />
   <xs:element name="Login">
     <xs:complexType>
       <xs:sequence>
@@ -49,7 +48,7 @@
   <xs:element name="StatusPopravkiNaAutuResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ProjectServer" minOccurs="0" name="StatusPopravkiNaAutuResult" nillable="true" type="q1:ArrayOfstatus" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ProjectLibrary" minOccurs="0" name="StatusPopravkiNaAutuResult" nillable="true" type="q1:ArrayOfstatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

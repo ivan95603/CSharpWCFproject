@@ -22,12 +22,11 @@
     <MetadataSource Address="http://localhost:8734/MeteoServis/OperaterServis" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="OperaterServis.wsdl" MetadataType="Wsdl" ID="4452d338-2652-4346-944e-bab3c288fdc9" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?wsdl" />
     <MetadataFile FileName="OperaterServis.xsd" MetadataType="Schema" ID="f43233a0-1009-4230-aab6-ca71cc262bd3" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd2" />
-    <MetadataFile FileName="OperaterServis1.xsd" MetadataType="Schema" ID="bb717262-b335-4c31-96d1-aaf1eee8289e" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd3" />
+    <MetadataFile FileName="OperaterServis3.xsd" MetadataType="Schema" ID="a174f021-554b-44fc-9c23-42b79504bea3" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd0" />
     <MetadataFile FileName="OperaterServis.disco" MetadataType="Disco" ID="d680ee8d-ac68-4865-abb3-d5ac48e0a06e" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?disco" />
     <MetadataFile FileName="OperaterServis2.xsd" MetadataType="Schema" ID="36d30d86-b60d-4cae-a684-7001230d3387" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd1" />
-    <MetadataFile FileName="OperaterServis3.xsd" MetadataType="Schema" ID="a174f021-554b-44fc-9c23-42b79504bea3" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd0" />
+    <MetadataFile FileName="OperaterServis.wsdl" MetadataType="Wsdl" ID="4452d338-2652-4346-944e-bab3c288fdc9" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/OperaterServis?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

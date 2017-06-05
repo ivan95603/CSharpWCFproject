@@ -112,19 +112,11 @@ namespace ProjectServer
             
                         public List<status> StatusPopravkiNaAutu()
                         {
-                List<status> temp = new List<status>();
-                status a = status.nijeStigaoNaRed; ;
-                status b = status.popravljen;
-                temp.Add(a);
-                temp.Add(b);
-                    
-                /*   if (logovan)
-                   {
-                       return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
-                   }
-
-                   return null;*/
-                return temp;
+                            if (logovan)
+                            {
+                                return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
+                            }
+                            return null;
                         }
 
           

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectLibrary;
 
+
 namespace ProjectOperater
 {
     public partial class Form1 : Form
@@ -32,7 +33,7 @@ namespace ProjectOperater
             servis = new OperaterServis.OperaterServisClient();
             Debug.WriteLine(servis.Login("ivan", "pass"));
 
-            List<ProjectLibrary.status> popravkeList = servis.StatusPopravkiNaAutu(); // servis.StatusPopravkiNaAutu().ToList();
+            List<status> popravkeList = /*servis.StatusPopravkiNaAutu();*/ servis.StatusPopravkiNaAutu().ToList();
             double cenaTroskova = servis.SumaTroskovaNaAutuZaKorisnika();
 
 
