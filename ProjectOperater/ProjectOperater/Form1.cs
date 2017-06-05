@@ -51,6 +51,7 @@ namespace ProjectOperater
            // Debug.WriteLine(tabControl1.SelectedIndex);
             if (tabControl1.SelectedIndex == 1)
             {
+                listBox2.Items.Clear();
                 if (!servis.proveriLogin())
                 {
                     servis.Login("ivan", "pass");
@@ -65,16 +66,18 @@ namespace ProjectOperater
             }
             else if (tabControl1.SelectedIndex == 2)
             {
+                listBox3.Items.Clear();
+
                 if (!servis.proveriLogin())
                 {
                     servis.Login("ivan", "pass");
                 }
 
- //               KorisniciPovuceni = servis.PovuciKorisnike();
-                foreach (var VARIABLE in DeloviPovuceni)
+                KorisniciPovuceni = servis.PovuciKorisnike().ToList();
+                foreach (var VARIABLE in KorisniciPovuceni)
                 {
-                    listBox2.Items.Add(VARIABLE.nazivDela);
-                    Debug.WriteLine(VARIABLE.nazivDela);
+                    listBox3.Items.Add(VARIABLE.korisnicko_ime);
+                    Debug.WriteLine(VARIABLE.korisnicko_ime);
                 }
             }
 

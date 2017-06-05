@@ -44,7 +44,7 @@ namespace ProjectLibrary
         }
 
         [DataMember]
-        string korisnicko_ime;
+        public string korisnicko_ime;
         [DataMember]
         string lozinka;
 
