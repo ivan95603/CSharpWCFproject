@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using ProjectLibrary;
 using System.Runtime.Serialization;
+using ProjectLibrary;
 
 namespace ProjectServer
 {
@@ -26,8 +26,8 @@ namespace ProjectServer
         {
             Korisnik.korisnici.Add(new Korisnik("ivan", "pass"));
 
-            ProjectLibrary.Deo.DodajDeo(new Deo("Remenjaca", 10000));
-            ProjectLibrary.Deo.DodajDeo(new Deo("Kais", 5000));
+            Deo.DodajDeo(new Deo("Remenjaca", 10000));
+            Deo.DodajDeo(new Deo("Kais", 5000));
 
 
 
@@ -68,7 +68,7 @@ namespace ProjectServer
 
             
                         [OperationContract]
-                       List<Deo> PovuciDelove();
+                        ListaDeo PovuciDelove();
            
 
         }
@@ -112,16 +112,23 @@ namespace ProjectServer
             
                         public List<status> StatusPopravkiNaAutu()
                         {
-                            if (logovan)
-                            {
-                                return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
-                            }
+                List<status> temp = new List<status>();
+                status a = status.nijeStigaoNaRed; ;
+                status b = status.popravljen;
+                temp.Add(a);
+                temp.Add(b);
+                    
+                /*   if (logovan)
+                   {
+                       return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
+                   }
 
-                            return null;
+                   return null;*/
+                return temp;
                         }
 
           
-                        public List<Deo> PovuciDelove()
+                        public ListaDeo PovuciDelove()
                         {
                             return ProjectLibrary.Deo.lagerDelova;
                         }

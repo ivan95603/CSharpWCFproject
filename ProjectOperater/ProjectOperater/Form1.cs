@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectServer;
+using ProjectLibrary;
 
 namespace ProjectOperater
 {
@@ -32,7 +32,7 @@ namespace ProjectOperater
             servis = new OperaterServis.OperaterServisClient();
             Debug.WriteLine(servis.Login("ivan", "pass"));
 
-            List<ProjectOperater.OperaterServis.status> popravkeList = servis.StatusPopravkiNaAutu().ToList();
+            List<ProjectLibrary.status> popravkeList = servis.StatusPopravkiNaAutu(); // servis.StatusPopravkiNaAutu().ToList();
             double cenaTroskova = servis.SumaTroskovaNaAutuZaKorisnika();
 
 

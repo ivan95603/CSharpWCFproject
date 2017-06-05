@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="ol+zTO1vomkDXS8J4IM1aBOhse0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="xeGiCP8azmeIiUM7UGNAXGO/MvI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="binding1_IOperaterServis">
       <properties>
@@ -127,10 +127,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="binding1_IOperaterServis" contract="OperaterServis.IOperaterServis" bindingType="wsHttpBinding" address="http://localhost:8732/MeteoServis/OperaterServis" bindingConfiguration="binding1_IOperaterServis">
+    <endpoint name="binding1_IOperaterServis" contract="OperaterServis.IOperaterServis" bindingType="wsHttpBinding" address="http://localhost:8734/MeteoServis/OperaterServis" bindingConfiguration="binding1_IOperaterServis">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8732/MeteoServis/OperaterServis</serializedValue>
+          <serializedValue>http://localhost:8734/MeteoServis/OperaterServis</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -7,11 +7,7 @@
   </xs:complexType>
   <xs:element name="ArrayOfstatus" nillable="true" type="tns:ArrayOfstatus" />
   <xs:simpleType name="status">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="nijeStigaoNaRed" />
-      <xs:enumeration value="popravljaSe" />
-      <xs:enumeration value="popravljen" />
-    </xs:restriction>
+    <xs:restriction base="xs:string" />
   </xs:simpleType>
   <xs:element name="status" nillable="true" type="tns:status" />
 </xs:schema>

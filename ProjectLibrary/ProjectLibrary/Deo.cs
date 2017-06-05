@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace ProjectLibrary
 {
-    [Serializable]
     [DataContract]
-    [CollectionDataContract]
     public class Deo
     {
-        
+        /*
         [DataMember]
         public static List<Deo> lagerDelova = new List<Deo>();
+        */
+        public static ListaDeo lagerDelova = new ListaDeo();
+
 
         [DataMember]
         static int deoID = 0;
@@ -58,4 +59,8 @@ namespace ProjectLibrary
             }
         }
     }
+    [CollectionDataContract]
+    public class ListaDeo:List<Deo>
+    { }
+
 }

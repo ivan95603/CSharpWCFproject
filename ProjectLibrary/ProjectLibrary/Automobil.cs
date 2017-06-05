@@ -6,11 +6,17 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectServer
+namespace ProjectLibrary
 {
 
-    [DataContract()]
-    public enum status { nijeStigaoNaRed, popravljaSe, popravljen};
+    [DataContract]
+    public enum status {
+        [EnumMember]
+        nijeStigaoNaRed,
+        [EnumMember]
+        popravljaSe,
+        [EnumMember]
+        popravljen };
 
     [CollectionDataContract]
     public class Automobil

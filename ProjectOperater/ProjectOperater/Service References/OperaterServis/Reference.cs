@@ -10,20 +10,21 @@
 
 namespace ProjectOperater.OperaterServis {
     using System.Runtime.Serialization;
+    using System;
     
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="status", Namespace="http://schemas.datacontract.org/2004/07/ProjectServer")]
-    public enum status : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        nijeStigaoNaRed = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        popravljaSe = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        popravljen = 2,
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfstatus", Namespace="http://schemas.datacontract.org/2004/07/ProjectServer", ItemName="status")]
+    [System.SerializableAttribute()]
+    public class ArrayOfstatus : System.Collections.Generic.List<ProjectLibrary.status> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ListaDeo", Namespace="http://schemas.datacontract.org/2004/07/ProjectLibrary", ItemName="Deo")]
+    [System.SerializableAttribute()]
+    public class ListaDeo : System.Collections.Generic.List<ProjectLibrary.Deo> {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,10 +50,16 @@ namespace ProjectOperater.OperaterServis {
         System.Threading.Tasks.Task<double> SumaTroskovaNaAutuZaKorisnikaAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutu", ReplyAction="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutuResponse")]
-        ProjectOperater.OperaterServis.status[] StatusPopravkiNaAutu();
+        ProjectOperater.OperaterServis.ArrayOfstatus StatusPopravkiNaAutu();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutu", ReplyAction="http://tempuri.org/IOperaterServis/StatusPopravkiNaAutuResponse")]
-        System.Threading.Tasks.Task<ProjectOperater.OperaterServis.status[]> StatusPopravkiNaAutuAsync();
+        System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ArrayOfstatus> StatusPopravkiNaAutuAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciDelove", ReplyAction="http://tempuri.org/IOperaterServis/PovuciDeloveResponse")]
+        ProjectOperater.OperaterServis.ListaDeo PovuciDelove();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciDelove", ReplyAction="http://tempuri.org/IOperaterServis/PovuciDeloveResponse")]
+        System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ListaDeo> PovuciDeloveAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -106,12 +113,20 @@ namespace ProjectOperater.OperaterServis {
             return base.Channel.SumaTroskovaNaAutuZaKorisnikaAsync();
         }
         
-        public ProjectOperater.OperaterServis.status[] StatusPopravkiNaAutu() {
+        public ProjectOperater.OperaterServis.ArrayOfstatus StatusPopravkiNaAutu() {
             return base.Channel.StatusPopravkiNaAutu();
         }
         
-        public System.Threading.Tasks.Task<ProjectOperater.OperaterServis.status[]> StatusPopravkiNaAutuAsync() {
+        public System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ArrayOfstatus> StatusPopravkiNaAutuAsync() {
             return base.Channel.StatusPopravkiNaAutuAsync();
+        }
+        
+        public ProjectOperater.OperaterServis.ListaDeo PovuciDelove() {
+            return base.Channel.PovuciDelove();
+        }
+        
+        public System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ListaDeo> PovuciDeloveAsync() {
+            return base.Channel.PovuciDeloveAsync();
         }
     }
 }

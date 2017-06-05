@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectLibrary;
 
-namespace ProjectServer
+namespace ProjectLibrary
 {
     [CollectionDataContract]
     public class Popravka
