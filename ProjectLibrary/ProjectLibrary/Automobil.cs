@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,19 +10,11 @@ using System.Threading.Tasks;
 namespace ProjectLibrary
 {
 
-    [DataContract]
-    public enum status {
-        [EnumMember]
-        nijeStigaoNaRed,
-        [EnumMember]
-        popravljaSe,
-        [EnumMember]
-        popravljen };
 
     [CollectionDataContract]
     public class Automobil
     {
-        public static List<Automobil> listaAutomobila = new List<Automobil>();
+        public List<Popravka> popravke = new List<Popravka>();
 
         static int trenutniID = 0;
 
@@ -29,13 +22,12 @@ namespace ProjectLibrary
 
         int id_automobil;
         string podaci;
-        status statusPopravke;
+
         double cena_popravke;
-        string korisnicko_ime;
         int id_popravke;
         double sumaTroskovaNaAutu;
 
-        List<Popravka> popravke;
+        //List<Popravka> popravke;
 
 
         public double sumaTroskovaZaAuto()
@@ -51,31 +43,29 @@ namespace ProjectLibrary
             return suma;
         }
 
-        public static List<status> stanjaPopravkaNaKolima(string username)
+        public List<status> stanjaPopravkaNaKolima()
         {
             List<status> temp = new List<status>();
 
-            foreach (var VARIABLE in Automobil.listaAutomobila)
+            foreach (var VARIABLE in popravke)
             {
-                if (VARIABLE.korisnicko_ime == username)
-                {
+      
                     temp.Add(VARIABLE.statusPopravke);
-                }
+               
             }
 
             return temp;
         }
 
-        public static double sumaCeneTroskova(string username)
+        public double sumaTroskovaZaAuto(string username)
         {
             double sum = 0;
 
-            foreach (var VARIABLE in Automobil.listaAutomobila)
+            foreach (var VARIABLE in popravke)
             {
-                if (VARIABLE.korisnicko_ime == username)
-                {
-                    sum += VARIABLE.sumaTroskovaNaAutu;
-                }
+              
+                    sum += VARIABLE.CenaPopravke();
+                
             }
 
             return sum;
@@ -83,18 +73,17 @@ namespace ProjectLibrary
 
 
 
-        public Automobil(string podaci, status statusPopravke, string korisnickoIme, List<Popravka> popravke)
+
+        public Automobil(string podaci, List<Popravka> popravke)
         { 
             try
             {
                 if (podaci == null) throw new ArgumentNullException(nameof(podaci));
-                if ((korisnickoIme == null) ||  !(Korisnik.ProveriDaLiPostojiKorisnik(korisnickoIme))  ) throw new ArgumentNullException(nameof(korisnickoIme));
                 if (popravke == null) throw new ArgumentNullException(nameof(popravke));
                this.id_automobil = trenutniID;
                 trenutniID++;
                 this.podaci = podaci;
-                this.statusPopravke = statusPopravke;
-                korisnicko_ime = korisnickoIme;
+               
                 id_popravke = trenutniIdPopravke;
                 trenutniIdPopravke++;
                 this.popravke = popravke;

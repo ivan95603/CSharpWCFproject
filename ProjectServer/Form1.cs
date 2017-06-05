@@ -29,16 +29,16 @@ namespace ProjectServer
             Deo.DodajDeo(new Deo("Remenjaca", 10000));
             Deo.DodajDeo(new Deo("Kais", 5000));
 
+            Korisnik.korisnici[0].Automobili.Add(new Automobil("Audi", new List<Popravka>()));
+
+            
+            Korisnik.korisnici[0].Automobili[0].popravke.Add(new Popravka(status.nijeStigaoNaRed, new List<Deo>() ));
+            Korisnik.korisnici[0].Automobili[0].popravke[0].DodajDeoUPopravku("Remenjaca");
+            Korisnik.korisnici[0].Automobili[0].popravke[0].DodajDeoUPopravku("Kais");
 
 
-            List<Popravka> ivanPopravke = new List<Popravka>();
-            ivanPopravke.Add(new Popravka());
-            ivanPopravke[0].DodajDeoUPopravku("Remenjaca");
-            ivanPopravke[0].DodajDeoUPopravku("Kais");
-
-
-            Automobil.listaAutomobila.Add( new Automobil("podaci", status.popravljaSe, "ivan", ivanPopravke) );
-            Debug.WriteLine(Automobil.listaAutomobila[0].sumaTroskovaZaAuto());
+           // Automobil.listaAutomobila.Add( new Automobil("podaci", status.popravljaSe, "ivan", ivanPopravke) );
+           // Debug.WriteLine(Automobil.listaAutomobila[0].sumaTroskovaZaAuto());
 
         }
    
@@ -116,7 +116,7 @@ namespace ProjectServer
             {
                 if (logovan)
                 {
-                   return Automobil.sumaCeneTroskova(korisnickoIme);
+                   return Korisnik.sumaTroskovaZaKorisnika(korisnickoIme);
                 }
                 return 0;
             }
@@ -125,7 +125,7 @@ namespace ProjectServer
             {
                  if (logovan)
                  {
-                    return Automobil.stanjaPopravkaNaKolima(korisnickoIme);
+                    return Korisnik.stanjaPopravkaNaKolimaZaKorisnika(korisnickoIme);
                  }
                  return null;
             }
@@ -155,9 +155,10 @@ namespace ProjectServer
              *
              */
 
-
-
-
+            public ListaDeo PovuciKorisnike()
+            {
+                throw new NotImplementedException();
+            }
         }
 
 

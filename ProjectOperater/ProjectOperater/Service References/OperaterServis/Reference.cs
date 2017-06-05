@@ -59,6 +59,12 @@ namespace ProjectOperater.OperaterServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PromeniCenuZaIDOdDeo", ReplyAction="http://tempuri.org/IOperaterServis/PromeniCenuZaIDOdDeoResponse")]
         System.Threading.Tasks.Task<bool> PromeniCenuZaIDOdDeoAsync(int ID, double Cena);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciKorisnike", ReplyAction="http://tempuri.org/IOperaterServis/PovuciKorisnikeResponse")]
+        ProjectOperater.OperaterServis.ListaDeo PovuciKorisnike();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciKorisnike", ReplyAction="http://tempuri.org/IOperaterServis/PovuciKorisnikeResponse")]
+        System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ListaDeo> PovuciKorisnikeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -134,6 +140,14 @@ namespace ProjectOperater.OperaterServis {
         
         public System.Threading.Tasks.Task<bool> PromeniCenuZaIDOdDeoAsync(int ID, double Cena) {
             return base.Channel.PromeniCenuZaIDOdDeoAsync(ID, Cena);
+        }
+        
+        public ProjectOperater.OperaterServis.ListaDeo PovuciKorisnike() {
+            return base.Channel.PovuciKorisnike();
+        }
+        
+        public System.Threading.Tasks.Task<ProjectOperater.OperaterServis.ListaDeo> PovuciKorisnikeAsync() {
+            return base.Channel.PovuciKorisnikeAsync();
         }
     }
 }

@@ -8,18 +8,34 @@ using ProjectLibrary;
 
 namespace ProjectLibrary
 {
+    [DataContract]
+    public enum status
+    {
+        [EnumMember]
+        nijeStigaoNaRed,
+        [EnumMember]
+        popravljaSe,
+        [EnumMember]
+        popravljen
+    };
+
     [CollectionDataContract]
     public class Popravka
     {
-        static int trenutniIDPopravke = 0;
+        public List<Deo> deloviZaPoravku = new List<Deo>();
 
-        int id_popravke;
+        static int trenutniIDPopravke = 0;
+        public status statusPopravke;
+
+        public int id_popravke;
         List<int> deloviIDs = new List<int>();
         List<Deo> delovi = new List<Deo>();
 
-        public Popravka()
+        public Popravka(status statusPopravke, List<Deo> deloviZaPopravke)
         {
             id_popravke = trenutniIDPopravke;
+            this.statusPopravke = statusPopravke;
+            this.deloviZaPoravku = deloviZaPopravke;
             trenutniIDPopravke++;
         }
 

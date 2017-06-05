@@ -12,6 +12,10 @@ namespace ProjectLibrary
     {
         public static List<Korisnik> korisnici = new List<Korisnik>();
 
+        public List<Automobil> Automobili = new List<Automobil>();
+
+        
+
         public static bool proveriLogin(string korIme, string pass)
         {
             foreach (var item in korisnici)
@@ -48,5 +52,55 @@ namespace ProjectLibrary
             korisnicko_ime = korisnickoIme;
             this.lozinka = lozinka;
         }
+
+        public double sumaTroskovaZaKorisnika()
+        {
+            double tempSum = 0;
+            foreach (var VARIABLE in Automobili)
+            {
+                tempSum += VARIABLE.sumaTroskovaZaAuto();
+            }
+            return tempSum;
+        }
+
+
+        public static double sumaTroskovaZaKorisnika(string userName)
+        {
+            double tempSum = 0;
+
+            foreach (var VARIABLE in Korisnik.korisnici)
+            {
+                if (VARIABLE.korisnicko_ime == userName)
+                {
+                    foreach (var VARIABLE2 in VARIABLE.Automobili)
+                    {
+                        tempSum += VARIABLE2.sumaTroskovaZaAuto();
+                    }
+                }
+            }
+           
+            return tempSum;
+        }
+
+
+        public static List<status> stanjaPopravkaNaKolimaZaKorisnika(string userName)
+        {
+            List<status> tempStatusi = new List<status>();
+
+            foreach (var VARIABLE in Korisnik.korisnici)
+            {
+                if (VARIABLE.korisnicko_ime == userName)
+                {
+                    foreach (var VARIABLE2 in VARIABLE.Automobili)
+                    {
+                        tempStatusi.AddRange(VARIABLE2.stanjaPopravkaNaKolima());
+                    }
+                }
+            }
+
+            return tempStatusi;
+        }
+
+
     }
 }

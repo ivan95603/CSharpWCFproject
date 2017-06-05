@@ -80,4 +80,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PovuciKorisnike">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PovuciKorisnikeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="PovuciKorisnikeResult" nillable="true" type="q3:ListaDeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
