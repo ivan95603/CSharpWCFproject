@@ -18,6 +18,11 @@ namespace ProjectOperater
         OperaterServis.OperaterServisClient servis = new OperaterServis.OperaterServisClient();
         List<Deo> DeloviPovuceni;
         List<Korisnik> KorisniciPovuceni;
+
+        Korisnik izabraniKorisnik;
+        Automobil izabraniAutomobil;
+        Popravka izabranaPopravka;
+
         public Form1()
         {
             InitializeComponent();
@@ -66,7 +71,7 @@ namespace ProjectOperater
             }
             else if (tabControl1.SelectedIndex == 2)
             {
-                listBox3.Items.Clear();
+                listBoxKorisnici.Items.Clear();
 
                 if (!servis.proveriLogin())
                 {
@@ -76,7 +81,7 @@ namespace ProjectOperater
                 KorisniciPovuceni = servis.PovuciKorisnike().ToList();
                 foreach (var VARIABLE in KorisniciPovuceni)
                 {
-                    listBox3.Items.Add(VARIABLE.korisnicko_ime);
+                    listBoxKorisnici.Items.Add(VARIABLE.korisnicko_ime);
                     Debug.WriteLine(VARIABLE.korisnicko_ime);
                 }
             }
@@ -116,6 +121,220 @@ namespace ProjectOperater
             servis.PromeniCenuZaIDOdDeo(ID, Cena);
             DeloviPovuceni = servis.PovuciDelove();
             int a = 2;
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var Korisnici in KorisniciPovuceni)
+            {
+                if (Korisnici.korisnicko_ime == listBoxKorisnici.SelectedItem.ToString())
+                {
+                    textBox1.Text = Korisnici.korisnicko_ime;
+
+                    izabraniKorisnik = Korisnici;
+
+                    foreach (var Auti in Korisnici.Automobili)
+                    {
+                        listBoxAutomobili.Items.Add(Auti.podaci);
+                    }
+                    
+                }
+            }
+            DeloviPovuceni = servis.PovuciDelove();
+        }
+
+        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var AutomobilFor in izabraniKorisnik.Automobili)
+            {
+
+
+
+                if (AutomobilFor.podaci == listBoxAutomobili.SelectedItem.ToString())
+                {
+                    izabraniAutomobil = AutomobilFor;
+                    foreach (var Auti in izabraniKorisnik.Automobili)
+                    {
+                        foreach (var VARIABLE in Auti.popravke)
+                        {
+                            listBoxPopravke.Items.Add(VARIABLE.id_popravke);
+                        }
+                        
+                    }
+
+                }
+
+            }
+            DeloviPovuceni = servis.PovuciDelove();
+        }
+
+        private void listBoxPopravke_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var VARIABLE in izabraniAutomobil.popravke)
+            {
+                if (listBoxPopravke.SelectedItem.ToString() == VARIABLE.id_popravke.ToString())
+                {
+    
+                }
+            }
+        }
+
+        void ocistiKontrole()
+        {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            listBoxKorisnici.Items.Clear();
+            listBoxAutomobili.Items.Clear();
+            listBoxPopravke.Items.Clear();
+            listBoxDeloviZaPopravku.Items.Clear();
+
+            if (!servis.proveriLogin())
+            {
+                servis.Login("ivan", "pass");
+            }
+
+            /*DeloviPovuceni = servis.PovuciDelove();
+            foreach (var VARIABLE in DeloviPovuceni)
+            {
+                listBox2.Items.Add(VARIABLE.nazivDela);
+            }*/
+
+            KorisniciPovuceni = servis.PovuciKorisnike().ToList();
+            foreach (var VARIABLE in KorisniciPovuceni)
+            {
+                listBoxKorisnici.Items.Add(VARIABLE.korisnicko_ime);
+                Debug.WriteLine(VARIABLE.korisnicko_ime);
+            }
+
+        }
+
+        void CommandHelp()
+        {
+            commandOutputBox.Text += "Moguce komande: \n";
+            commandOutputBox.Text += "help \n";
+            commandOutputBox.Text += "adduser \n";
+            commandOutputBox.Text += "deluser \n";
+            commandOutputBox.Text += "For command help use commandName --help \n";
+
+        }
+
+        void CommandExecute()
+        {
+
+            if (!servis.proveriLogin())
+            {
+                return;
+            }
+
+            string komanda = commandBox.Text;
+
+            string[] komandaDelovi = komanda.Split(' ');
+
+            komandaDelovi[0] = komandaDelovi[0].ToLower();
+
+            switch (komandaDelovi[0])
+            {
+                case "help": // adduser nameOfUser || returns user id and status
+                {
+                    CommandHelp();
+
+                    break; /* optional */
+                }
+
+
+                case "adduser": // adduser nameOfUser || returns user id and status
+                {
+                    if (komandaDelovi[1] == "--help")
+                    {
+                        commandOutputBox.Text += "expecting  adduser nameOfUser password || returns user id and status \n";
+                        break;
+                    }
+
+                    if (komandaDelovi.Length != 3)
+                    {
+                        commandOutputBox.Text += "Niste lepo uneli komandu molimo konsultujte help\n";
+                        return;
+                    }
+
+                    if (servis.DodajKorisnika(komandaDelovi[1], komandaDelovi[2]))
+                    {
+                        commandOutputBox.Text += "Uspesno dodat korisnik " + komandaDelovi[1] + "\n";
+                        ocistiKontrole();
+                        break;
+                    }
+                    else
+                    {
+                        commandOutputBox.Text += "Nije moguce dodati korisnika  " + komandaDelovi[1] + " moguce da vec postoji\n";
+                        ocistiKontrole();
+                    }
+
+
+
+
+
+                    break; /* optional */
+                }
+
+                case "deluser": // deluser nameOfUser || returns user id and status
+                {
+                    if (komandaDelovi[1] == "--help")
+                    {
+                        commandOutputBox.Text += "expecting deluser nameOfUser || returns user id and status";
+                        ocistiKontrole();
+                        break;
+                    }
+
+                    ;
+
+                    if (servis.ObrisiKorisnika(komandaDelovi[1]))
+                    {
+                        commandOutputBox.Text += "Uspesno obrisan korisnik " + komandaDelovi[1];
+                        ocistiKontrole();
+                        break;
+                    }
+                    else
+                    {
+                        commandOutputBox.Text += "Nije moguce obrisati korisnika  " + komandaDelovi[1];
+                        ocistiKontrole();
+                    }
+                    break; /* optional */
+                }
+
+
+
+
+                case "addcar":// addcar nameOfUser nameOfCar || returns status
+                    //statement(s);
+                    break; /* optional */
+
+                /* you can have any number of case statements */
+                default:
+                {
+                    commandOutputBox.Text += "Pogresan format komande molimo konsultujte help";
+                        break;
+                } /* Optional */
+                //statement(s);
+            }
+
+
+        }
+
+
+        private void buttonExecute_Click(object sender, EventArgs e)
+        {
+
+            CommandExecute();    
+        
+        }
+
+        private void commandBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                CommandExecute();
+                commandBox.Text = "";
+                // Then Enter key was pressed
+            }
         }
     }
 }

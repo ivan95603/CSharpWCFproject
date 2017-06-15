@@ -26,9 +26,9 @@ namespace ProjectLibrary
 
 
         [DataMember]
-        int id_automobil;
+        public int id_automobil;
         [DataMember]
-        string podaci;
+        public string podaci;
 
 
 

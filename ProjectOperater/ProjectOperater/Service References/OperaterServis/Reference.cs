@@ -65,6 +65,18 @@ namespace ProjectOperater.OperaterServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PovuciKorisnike", ReplyAction="http://tempuri.org/IOperaterServis/PovuciKorisnikeResponse")]
         System.Threading.Tasks.Task<ProjectLibrary.Korisnik[]> PovuciKorisnikeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/DodajKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/DodajKorisnikaResponse")]
+        bool DodajKorisnika(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/DodajKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/DodajKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> DodajKorisnikaAsync(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiKorisnikaResponse")]
+        bool ObrisiKorisnika(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> ObrisiKorisnikaAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -148,6 +160,22 @@ namespace ProjectOperater.OperaterServis {
         
         public System.Threading.Tasks.Task<ProjectLibrary.Korisnik[]> PovuciKorisnikeAsync() {
             return base.Channel.PovuciKorisnikeAsync();
+        }
+        
+        public bool DodajKorisnika(string userName, string password) {
+            return base.Channel.DodajKorisnika(userName, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DodajKorisnikaAsync(string userName, string password) {
+            return base.Channel.DodajKorisnikaAsync(userName, password);
+        }
+        
+        public bool ObrisiKorisnika(string userName) {
+            return base.Channel.ObrisiKorisnika(userName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ObrisiKorisnikaAsync(string userName) {
+            return base.Channel.ObrisiKorisnikaAsync(userName);
         }
     }
 }

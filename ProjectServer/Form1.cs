@@ -85,6 +85,12 @@ namespace ProjectServer
             [OperationContract]
             List<Korisnik> PovuciKorisnike();
 
+            [OperationContract]
+            bool DodajKorisnika(string userName, string password);
+
+            [OperationContract]
+            bool ObrisiKorisnika(string userName);
+
 
 
         }
@@ -159,6 +165,45 @@ namespace ProjectServer
             {
                 return Korisnik.korisnici;
             }
+
+            public bool DodajKorisnika(string userName, string password)
+            {
+                try
+                {
+                    foreach (var VARIABLE in Korisnik.korisnici)
+                    {
+                        if (VARIABLE.korisnicko_ime == userName)
+                        {
+                            throw new Exception("Korisnik vec postoji");
+                        }
+                    }
+
+                    Korisnik.korisnici.Add(new Korisnik(userName, password));
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+              
+            }
+
+            public bool ObrisiKorisnika(string userName)
+            {
+                for (int i = 0; i < Korisnik.korisnici.Count(); i++)
+                {
+                    if (Korisnik.korisnici[i].korisnicko_ime == userName)
+                    {
+                        Korisnik.korisnici.RemoveAt(i);
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+
+
         }
 
 
