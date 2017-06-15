@@ -86,7 +86,14 @@ namespace ProjectLibrary
             return sum;
         }
 
-
+        public Automobil(string podaci)
+        {
+            if (podaci == null) throw new ArgumentNullException(nameof(podaci));
+            this.podaci = podaci;
+            this.id_automobil = Automobil.trenutniID;
+            trenutniID++;
+            this.popravke = new List<Popravka>();
+        }
 
 
         public Automobil(string podaci, List<Popravka> popravke)

@@ -16,7 +16,8 @@ namespace ProjectLibrary
         [DataMember]
         public List<Automobil> Automobili = new List<Automobil>();
 
-        
+        [DataMember]
+        static int trenutniIdKorisnika = 0;
 
         public static bool proveriLogin(string korIme, string pass)
         {
@@ -44,6 +45,8 @@ namespace ProjectLibrary
         }
 
         [DataMember]
+        public int idKorisnika;
+        [DataMember]
         public string korisnicko_ime;
         [DataMember]
         string lozinka;
@@ -56,6 +59,8 @@ namespace ProjectLibrary
             if (lozinka == null) throw new ArgumentNullException(nameof(lozinka));
             korisnicko_ime = korisnickoIme;
             this.lozinka = lozinka;
+            this.idKorisnika = trenutniIdKorisnika;
+            trenutniIdKorisnika++;
         }
 
         public double sumaTroskovaZaKorisnika()

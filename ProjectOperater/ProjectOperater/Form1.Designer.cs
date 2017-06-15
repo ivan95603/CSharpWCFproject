@@ -382,6 +382,7 @@
             this.listBoxDeloviZaPopravku.Name = "listBoxDeloviZaPopravku";
             this.listBoxDeloviZaPopravku.Size = new System.Drawing.Size(100, 173);
             this.listBoxDeloviZaPopravku.TabIndex = 15;
+            this.listBoxDeloviZaPopravku.SelectedIndexChanged += new System.EventHandler(this.listBoxDeloviZaPopravku_SelectedIndexChanged);
             // 
             // label7
             // 

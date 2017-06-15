@@ -62,6 +62,7 @@ namespace ProjectOperater
                     servis.Login("ivan", "pass");
                 }
 
+                listBox2.Items.Clear();
                  DeloviPovuceni = servis.PovuciDelove();
                 foreach (var VARIABLE in DeloviPovuceni)
                 {
@@ -77,11 +78,11 @@ namespace ProjectOperater
                 {
                     servis.Login("ivan", "pass");
                 }
-
+                listBoxKorisnici.Items.Clear();
                 KorisniciPovuceni = servis.PovuciKorisnike().ToList();
                 foreach (var VARIABLE in KorisniciPovuceni)
                 {
-                    listBoxKorisnici.Items.Add(VARIABLE.korisnicko_ime);
+                    listBoxKorisnici.Items.Add(VARIABLE.idKorisnika.ToString() + ':' + VARIABLE.korisnicko_ime);
                     Debug.WriteLine(VARIABLE.korisnicko_ime);
                 }
             }
@@ -125,9 +126,13 @@ namespace ProjectOperater
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listBoxAutomobili.Items.Clear();
+            listBoxPopravke.Items.Clear();
+            listBoxDeloviZaPopravku.Items.Clear();
+
             foreach (var Korisnici in KorisniciPovuceni)
             {
-                if (Korisnici.korisnicko_ime == listBoxKorisnici.SelectedItem.ToString())
+                if (Korisnici.korisnicko_ime == listBoxKorisnici.SelectedItem.ToString().Split(':')[1])
                 {
                     textBox1.Text = Korisnici.korisnicko_ime;
 
@@ -135,7 +140,7 @@ namespace ProjectOperater
 
                     foreach (var Auti in Korisnici.Automobili)
                     {
-                        listBoxAutomobili.Items.Add(Auti.podaci);
+                        listBoxAutomobili.Items.Add(Auti.id_automobil.ToString() + ':' + Auti.podaci);
                     }
                     
                 }
@@ -145,12 +150,15 @@ namespace ProjectOperater
 
         private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+            listBoxPopravke.Items.Clear();
+            listBoxDeloviZaPopravku.Items.Clear();
             foreach (var AutomobilFor in izabraniKorisnik.Automobili)
             {
 
 
 
-                if (AutomobilFor.podaci == listBoxAutomobili.SelectedItem.ToString())
+                if (AutomobilFor.podaci == listBoxAutomobili.SelectedItem.ToString().Split(':')[1])
                 {
                     izabraniAutomobil = AutomobilFor;
                     foreach (var Auti in izabraniKorisnik.Automobili)
@@ -170,6 +178,7 @@ namespace ProjectOperater
 
         private void listBoxPopravke_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listBoxDeloviZaPopravku.Items.Clear();
             foreach (var VARIABLE in izabraniAutomobil.popravke)
             {
                 if (listBoxPopravke.SelectedItem.ToString() == VARIABLE.id_popravke.ToString())
@@ -304,8 +313,53 @@ namespace ProjectOperater
 
 
                 case "addcar":// addcar nameOfUser nameOfCar || returns status
-                    //statement(s);
-                    break; /* optional */
+                { 
+                    if (komandaDelovi[1] == "--help")
+                    {
+                        commandOutputBox.Text += "expecting addcar nameOfUser nameOfCar || returns user id and status";
+                        ocistiKontrole();
+                        break;
+                    }
+
+                    if (servis.DodajAutomobilZaKorisnika(komandaDelovi[1], komandaDelovi[2]))
+                    {
+                        commandOutputBox.Text += "Uspesno dodat automobil za korisnika " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2];
+                        ocistiKontrole();
+                        break;
+                    }
+                    else
+                    {
+                        commandOutputBox.Text += "Nije moguce dodati automobil za korisnika  " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2];
+                        ocistiKontrole();
+                    }
+                    break; 
+               }
+
+
+                case "remcar":// addcar nameOfUser nameOfCar || returns status
+                {
+                    if (komandaDelovi[1] == "--help")
+                    {
+                        commandOutputBox.Text += "expecting remcar nameOfUser nameOfCar || returns user id and status";
+                        ocistiKontrole();
+                        break;
+                    }
+
+                    if (servis.DodajAutomobilZaKorisnika(komandaDelovi[1], komandaDelovi[2]))
+                    {
+                        commandOutputBox.Text += "Uspesno dodat automobil za korisnika " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2];
+                        ocistiKontrole();
+                        break;
+                    }
+                    else
+                    {
+                        commandOutputBox.Text += "Nije moguce dodati automobil za korisnika  " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2];
+                        ocistiKontrole();
+                    }
+                    break;
+                }
+
+
 
                 /* you can have any number of case statements */
                 default:
@@ -333,8 +387,12 @@ namespace ProjectOperater
             {
                 CommandExecute();
                 commandBox.Text = "";
-                // Then Enter key was pressed
             }
+        }
+
+        private void listBoxDeloviZaPopravku_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

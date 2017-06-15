@@ -77,6 +77,24 @@ namespace ProjectOperater.OperaterServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiKorisnikaResponse")]
         System.Threading.Tasks.Task<bool> ObrisiKorisnikaAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnikaResponse")]
+        bool PromeniUserNameKorisnika(string newUserName, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> PromeniUserNameKorisnikaAsync(string newUserName, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnikaResponse")]
+        bool DodajAutomobilZaKorisnika(string userName, string naziv);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> DodajAutomobilZaKorisnikaAsync(string userName, string naziv);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnikaResponse")]
+        bool ObrisiAutomobilZaKorisnika(string userName, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> ObrisiAutomobilZaKorisnikaAsync(string userName, int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -176,6 +194,30 @@ namespace ProjectOperater.OperaterServis {
         
         public System.Threading.Tasks.Task<bool> ObrisiKorisnikaAsync(string userName) {
             return base.Channel.ObrisiKorisnikaAsync(userName);
+        }
+        
+        public bool PromeniUserNameKorisnika(string newUserName, string userName) {
+            return base.Channel.PromeniUserNameKorisnika(newUserName, userName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PromeniUserNameKorisnikaAsync(string newUserName, string userName) {
+            return base.Channel.PromeniUserNameKorisnikaAsync(newUserName, userName);
+        }
+        
+        public bool DodajAutomobilZaKorisnika(string userName, string naziv) {
+            return base.Channel.DodajAutomobilZaKorisnika(userName, naziv);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DodajAutomobilZaKorisnikaAsync(string userName, string naziv) {
+            return base.Channel.DodajAutomobilZaKorisnikaAsync(userName, naziv);
+        }
+        
+        public bool ObrisiAutomobilZaKorisnika(string userName, int id) {
+            return base.Channel.ObrisiAutomobilZaKorisnika(userName, id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ObrisiAutomobilZaKorisnikaAsync(string userName, int id) {
+            return base.Channel.ObrisiAutomobilZaKorisnikaAsync(userName, id);
         }
     }
 }

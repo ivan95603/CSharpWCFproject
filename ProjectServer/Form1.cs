@@ -91,6 +91,20 @@ namespace ProjectServer
             [OperationContract]
             bool ObrisiKorisnika(string userName);
 
+            [OperationContract]
+            bool PromeniUserNameKorisnika(string newUserName, string userName);
+
+
+            /**
+            * 
+            * Funkcije za Automobile
+            *
+            */
+            [OperationContract]
+            bool DodajAutomobilZaKorisnika(string userName, string naziv);
+
+            [OperationContract]
+            bool ObrisiAutomobilZaKorisnika(string userName, int id);
 
 
         }
@@ -203,7 +217,49 @@ namespace ProjectServer
             }
 
 
+            public bool PromeniUserNameKorisnika(string newUserName, string userName)
+            {
+                return false;
+            }
 
+
+            /**
+            * 
+            * Funkcije za Automobile
+            *
+            */
+
+            public bool DodajAutomobilZaKorisnika(string userName, string naziv)
+            {
+                foreach (var korisnik in Korisnik.korisnici)
+                {
+                    if (korisnik.korisnicko_ime == userName)
+                    {
+                        korisnik.Automobili.Add(new Automobil(naziv));
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            public bool ObrisiAutomobilZaKorisnika(string userName, int id)
+            {
+                foreach (var korisnik in Korisnik.korisnici)
+                {
+                    if (korisnik.korisnicko_ime == userName)
+                    {
+                        for (int i = 0; i < korisnik.Automobili.Count(); i++)
+                        {
+                            if (korisnik.Automobili[i].id_automobil == id)
+                            {
+                                korisnik.Automobili.RemoveAt(i);
+                                return true;
+                            }
+                        }                       
+                    }
+                }
+                return false;
+            }
         }
 
 

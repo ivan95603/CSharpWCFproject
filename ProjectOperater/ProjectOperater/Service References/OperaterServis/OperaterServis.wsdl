@@ -500,6 +500,138 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="binding1_IOperaterServis_PromeniUserNameKorisnika_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="binding1_IOperaterServis_PromeniUserNameKorisnika_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="binding1_IOperaterServis_DodajAutomobilZaKorisnika_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="binding1_IOperaterServis_DodajAutomobilZaKorisnika_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="binding1_IOperaterServis_ObrisiAutomobilZaKorisnika_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="binding1_IOperaterServis_ObrisiAutomobilZaKorisnika_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8734/MeteoServis/OperaterServis?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -563,6 +695,24 @@
   <wsdl:message name="IOperaterServis_ObrisiKorisnika_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObrisiKorisnikaResponse" />
   </wsdl:message>
+  <wsdl:message name="IOperaterServis_PromeniUserNameKorisnika_InputMessage">
+    <wsdl:part name="parameters" element="tns:PromeniUserNameKorisnika" />
+  </wsdl:message>
+  <wsdl:message name="IOperaterServis_PromeniUserNameKorisnika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PromeniUserNameKorisnikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOperaterServis_DodajAutomobilZaKorisnika_InputMessage">
+    <wsdl:part name="parameters" element="tns:DodajAutomobilZaKorisnika" />
+  </wsdl:message>
+  <wsdl:message name="IOperaterServis_DodajAutomobilZaKorisnika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DodajAutomobilZaKorisnikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOperaterServis_ObrisiAutomobilZaKorisnika_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObrisiAutomobilZaKorisnika" />
+  </wsdl:message>
+  <wsdl:message name="IOperaterServis_ObrisiAutomobilZaKorisnika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObrisiAutomobilZaKorisnikaResponse" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IOperaterServis">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Login">
       <wsdl:input wsam:Action="http://tempuri.org/IOperaterServis/Login" message="tns:IOperaterServis_Login_InputMessage" />
@@ -599,6 +749,18 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ObrisiKorisnika">
       <wsdl:input wsam:Action="http://tempuri.org/IOperaterServis/ObrisiKorisnika" message="tns:IOperaterServis_ObrisiKorisnika_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IOperaterServis/ObrisiKorisnikaResponse" message="tns:IOperaterServis_ObrisiKorisnika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="PromeniUserNameKorisnika">
+      <wsdl:input wsam:Action="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnika" message="tns:IOperaterServis_PromeniUserNameKorisnika_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnikaResponse" message="tns:IOperaterServis_PromeniUserNameKorisnika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DodajAutomobilZaKorisnika">
+      <wsdl:input wsam:Action="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnika" message="tns:IOperaterServis_DodajAutomobilZaKorisnika_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnikaResponse" message="tns:IOperaterServis_DodajAutomobilZaKorisnika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ObrisiAutomobilZaKorisnika">
+      <wsdl:input wsam:Action="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnika" message="tns:IOperaterServis_ObrisiAutomobilZaKorisnika_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnikaResponse" message="tns:IOperaterServis_ObrisiAutomobilZaKorisnika_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="binding1_IOperaterServis" type="tns:IOperaterServis">
@@ -700,6 +862,39 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#binding1_IOperaterServis_ObrisiKorisnika_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromeniUserNameKorisnika">
+      <soap12:operation soapAction="http://tempuri.org/IOperaterServis/PromeniUserNameKorisnika" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#binding1_IOperaterServis_PromeniUserNameKorisnika_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#binding1_IOperaterServis_PromeniUserNameKorisnika_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DodajAutomobilZaKorisnika">
+      <soap12:operation soapAction="http://tempuri.org/IOperaterServis/DodajAutomobilZaKorisnika" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#binding1_IOperaterServis_DodajAutomobilZaKorisnika_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#binding1_IOperaterServis_DodajAutomobilZaKorisnika_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObrisiAutomobilZaKorisnika">
+      <soap12:operation soapAction="http://tempuri.org/IOperaterServis/ObrisiAutomobilZaKorisnika" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#binding1_IOperaterServis_ObrisiAutomobilZaKorisnika_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#binding1_IOperaterServis_ObrisiAutomobilZaKorisnika_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
