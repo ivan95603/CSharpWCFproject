@@ -151,6 +151,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DodajAutomobilZaKorisnikaID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="naziv" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajAutomobilZaKorisnikaIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DodajAutomobilZaKorisnikaIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ObrisiAutomobilZaKorisnika">
     <xs:complexType>
       <xs:sequence>
@@ -163,6 +178,53 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ObrisiAutomobilZaKorisnikaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObrisiAutomobilZaKorisnikaID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObrisiAutomobilZaKorisnikaIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObrisiAutomobilZaKorisnikaIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajPopravkuZaAutoZaKorisnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="carID" type="xs:int" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajPopravkuZaAutoZaKorisnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DodajPopravkuZaAutoZaKorisnikaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObrisiPopravkuZaAutoZaKorisnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="carID" type="xs:int" />
+        <xs:element minOccurs="0" name="popravkaID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObrisiPopravkuZaAutoZaKorisnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObrisiPopravkuZaAutoZaKorisnikaResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

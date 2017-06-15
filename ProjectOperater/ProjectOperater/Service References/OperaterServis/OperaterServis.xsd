@@ -32,6 +32,7 @@
   <xs:complexType name="Korisnik">
     <xs:sequence>
       <xs:element minOccurs="0" name="Automobili" nillable="true" type="tns:ArrayOfAutomobil" />
+      <xs:element minOccurs="0" name="idKorisnika" type="xs:int" />
       <xs:element minOccurs="0" name="korisnicko_ime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="lozinka" nillable="true" type="xs:string" />
     </xs:sequence>

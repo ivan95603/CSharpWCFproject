@@ -100,13 +100,33 @@ namespace ProjectServer
             * Funkcije za Automobile
             *
             */
+
             [OperationContract]
             bool DodajAutomobilZaKorisnika(string userName, string naziv);
 
             [OperationContract]
+            bool DodajAutomobilZaKorisnikaID(int userID, string naziv);
+
+
+            [OperationContract]
             bool ObrisiAutomobilZaKorisnika(string userName, int id);
 
+            [OperationContract]
+            bool ObrisiAutomobilZaKorisnikaID(int userID, int id);
 
+            /**
+            * 
+            * Funkcije za Popravke
+            *
+            */
+
+            [OperationContract]
+            bool DodajPopravkuZaAutoZaKorisnika(int userID, int carID, int status);
+
+            [OperationContract]
+            bool ObrisiPopravkuZaAutoZaKorisnika(int userID, int carID, int popravkaID);
+            
+        
         }
 
         [CollectionDataContract]
@@ -242,6 +262,20 @@ namespace ProjectServer
                 return false;
             }
 
+            public bool DodajAutomobilZaKorisnikaID(int userID, string naziv)
+            {
+                foreach (var korisnik in Korisnik.korisnici)
+                {
+                    if (korisnik.idKorisnika == userID)
+                    {
+                        korisnik.Automobili.Add(new Automobil(naziv));
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+
             public bool ObrisiAutomobilZaKorisnika(string userName, int id)
             {
                 foreach (var korisnik in Korisnik.korisnici)
@@ -256,6 +290,80 @@ namespace ProjectServer
                                 return true;
                             }
                         }                       
+                    }
+                }
+                return false;
+            }
+
+            public bool ObrisiAutomobilZaKorisnikaID(int userID, int id)
+            {
+                foreach (var korisnik in Korisnik.korisnici)
+                {
+                    if (korisnik.idKorisnika == userID)
+                    {
+                        for (int i = 0; i < korisnik.Automobili.Count(); i++)
+                        {
+                            if (korisnik.Automobili[i].id_automobil == id)
+                            {
+                                korisnik.Automobili.RemoveAt(i);
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+
+            /**
+            * 
+            * Funkcije za Popravke
+            *
+            */
+
+
+            public bool DodajPopravkuZaAutoZaKorisnika(int userID, int carID, int status)
+            {
+
+                foreach (var korisnik in Korisnik.korisnici)
+                {
+                    if (korisnik.idKorisnika == userID)
+                    {
+                        foreach (var autiKorisnik in korisnik.Automobili)
+                        {
+                            if (autiKorisnik.id_automobil == carID)
+                            {
+                                autiKorisnik.popravke.Add(new Popravka((status)status));
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+
+            }
+
+            public bool ObrisiPopravkuZaAutoZaKorisnika(int userID, int carID, int popravkaID)
+            {
+                foreach (var korisnik in Korisnik.korisnici)
+                {
+                    if (korisnik.idKorisnika == userID)
+                    {
+                        foreach (var autiKorisnik in korisnik.Automobili)
+                        {
+                            if (autiKorisnik.id_automobil == carID)
+                            {
+
+                                for (int i = 0; i < autiKorisnik.popravke.Count(); i++)
+                                {
+                                    if (autiKorisnik.popravke[i].id_popravke == popravkaID)
+                                    {
+                                        autiKorisnik.popravke.RemoveAt(i);
+                                        return true;
+                                    }
+                                }
+                                return true;
+                            }
+                        }
                     }
                 }
                 return false;

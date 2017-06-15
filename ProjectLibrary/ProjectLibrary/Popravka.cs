@@ -35,7 +35,14 @@ namespace ProjectLibrary
         [DataMember]
         List<int> deloviIDs = new List<int>();
         [DataMember]
-        List<Deo> delovi = new List<Deo>();
+        public List<Deo> delovi = new List<Deo>();
+
+        public Popravka(status statusPopravke)
+        {
+            this.statusPopravke = statusPopravke;
+            this.id_popravke = trenutniIDPopravke;
+            trenutniIDPopravke++;
+        }
 
         public Popravka(status statusPopravke, List<Deo> deloviZaPopravke)
         {
