@@ -30,6 +30,13 @@ namespace ProjectLibrary
         [DataMember]
         public double cena_dela;
 
+
+
+        public static Deo izaberiDeo(int idDela)
+        {
+            return Deo.lagerDelova.Find(deo => deo.id == idDela);
+        }
+
         public Deo(string nazivDela, double cenaDela)
         {
             if (nazivDela == null) throw new ArgumentNullException(nameof(nazivDela));

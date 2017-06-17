@@ -53,45 +53,7 @@ namespace ProjectOperater
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // Debug.WriteLine(tabControl1.SelectedIndex);
-            if (tabControl1.SelectedIndex == 1)
-            {
-                listBox2.Items.Clear();
-                if (!servis.proveriLogin())
-                {
-                    servis.Login("ivan", "pass");
-                }
-
-                listBox2.Items.Clear();
-                 DeloviPovuceni = servis.PovuciDelove();
-                foreach (var VARIABLE in DeloviPovuceni)
-                {
-                    listBox2.Items.Add(VARIABLE.nazivDela);
-                    Debug.WriteLine(VARIABLE.nazivDela);
-                }
-            }
-            else if (tabControl1.SelectedIndex == 2)
-            {
-                listBoxKorisnici.Items.Clear();
-
-                if (!servis.proveriLogin())
-                {
-                    servis.Login("ivan", "pass");
-                }
-                listBoxKorisnici.Items.Clear();
-                KorisniciPovuceni = servis.PovuciKorisnike().ToList();
-                foreach (var VARIABLE in KorisniciPovuceni)
-                {
-                    listBoxKorisnici.Items.Add(VARIABLE.idKorisnika.ToString() + ':' + VARIABLE.korisnicko_ime);
-                    Debug.WriteLine(VARIABLE.korisnicko_ime);
-                }
-            }
-
-
-
-
-
-
+            ocistiKontrole();
         }
 
         private void Delovi_Click(object sender, EventArgs e)
@@ -101,27 +63,13 @@ namespace ProjectOperater
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (var VARIABLE in DeloviPovuceni)
-            {
-                if (VARIABLE.nazivDela == listBox2.SelectedItem.ToString())
-                {
-                    textBox1.Text = VARIABLE.nazivDela;
-                    numericUpDown1.Text = VARIABLE.cena_dela.ToString();
-                    numericUpDown2.Text = VARIABLE.id.ToString();
-
-                }
-            }
-            DeloviPovuceni = servis.PovuciDelove();
+           
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int ID = (int)numericUpDown2.Value;
-            double Cena = (Double)numericUpDown1.Value;
-            servis.PromeniCenuZaIDOdDeo(ID, Cena);
-            DeloviPovuceni = servis.PovuciDelove();
-            int a = 2;
+
         }
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,6 +95,8 @@ namespace ProjectOperater
 
             foreach (var Korisnici in KorisniciPovuceni)
             {
+
+
                 if (Korisnici.korisnicko_ime == selektovan)
                 {
                     textBox1.Text = Korisnici.korisnicko_ime;
@@ -159,6 +109,9 @@ namespace ProjectOperater
                     }
                     
                 }
+
+
+
             }
             DeloviPovuceni = servis.PovuciDelove();
         }
@@ -230,7 +183,7 @@ namespace ProjectOperater
         void ocistiKontrole()
         {
             listBox1.Items.Clear();
-            listBox2.Items.Clear();
+            listBoxDelovi.Items.Clear();
             listBoxKorisnici.Items.Clear();
             listBoxAutomobili.Items.Clear();
             listBoxPopravke.Items.Clear();
@@ -241,16 +194,27 @@ namespace ProjectOperater
                 servis.Login("ivan", "pass");
             }
 
-            /*DeloviPovuceni = servis.PovuciDelove();
+            DeloviPovuceni = servis.PovuciDelove();
             foreach (var VARIABLE in DeloviPovuceni)
             {
-                listBox2.Items.Add(VARIABLE.nazivDela);
-            }*/
+                listBoxDelovi.Items.Add(VARIABLE.id.ToString() + ':' + VARIABLE.nazivDela);
+                Debug.WriteLine(VARIABLE.nazivDela);
+            }
+
+
+            listBoxKorisnici.Items.Clear();
+
+            if (!servis.proveriLogin())
+            {
+                servis.Login("ivan", "pass");
+            }
+            listBoxKorisnici.Items.Clear();
 
             KorisniciPovuceni = servis.PovuciKorisnike().ToList();
             foreach (var VARIABLE in KorisniciPovuceni)
             {
-                listBoxKorisnici.Items.Add(VARIABLE.idKorisnika + ":" + VARIABLE.korisnicko_ime);
+                listBoxKorisnici.Items.Add(VARIABLE.idKorisnika.ToString() + ':' + VARIABLE.korisnicko_ime);
+                Debug.WriteLine(VARIABLE.korisnicko_ime);
             }
 
         }
@@ -261,6 +225,12 @@ namespace ProjectOperater
             commandOutputBox.Text += "help \n";
             commandOutputBox.Text += "adduser \n";
             commandOutputBox.Text += "deluser \n";
+            commandOutputBox.Text += "addcar \n";
+            commandOutputBox.Text += "delcar \n";
+            commandOutputBox.Text += "addfix \n";
+            commandOutputBox.Text += "delfix \n";
+            commandOutputBox.Text += "addpart \n";
+            commandOutputBox.Text += "delpart \n";
             commandOutputBox.Text += "For command help use commandName --help \n";
 
         }
@@ -414,7 +384,7 @@ namespace ProjectOperater
                     else
                     {
                         commandOutputBox.Text += "Nije moguce dodati popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
-                            ocistiKontrole();
+                        ocistiKontrole();
                     }
                     break;
                 }
@@ -428,13 +398,8 @@ namespace ProjectOperater
                         ocistiKontrole();
                         break;
                     }
-                    /***
-                     * 
-                     * 
-                     * */
-                     
-                         
-                     
+
+                                       
                     if (servis.ObrisiPopravkuZaAutoZaKorisnika(Convert.ToInt32(komandaDelovi[1]), Convert.ToInt32(komandaDelovi[2]), Convert.ToInt32(komandaDelovi[3])))
                     {
                         commandOutputBox.Text += "Uspesno obrisana popravka za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
@@ -448,6 +413,61 @@ namespace ProjectOperater
                     }
                     break;
                 }
+
+
+
+
+                case "addpart":// addcar nameOfUser nameOfCar || returns status
+                {
+                    if (komandaDelovi[1] == "--help")
+                    {
+                        commandOutputBox.Text += "expecting addpart userID carID popravkaID deoID || returns user id and status \n";
+                        ocistiKontrole();
+                        break;
+                    }
+
+                        if (servis.DodajDeoZaPopravkuZaAutoZaKorisnika(/*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*fixID*/ Convert.ToInt32(komandaDelovi[3]), /*partID*/ Convert.ToInt32(komandaDelovi[4])))
+                        {
+                            commandOutputBox.Text += "Uspesno dodat deo za popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
+                            ocistiKontrole();
+                            break;
+                        }
+                        else
+                        {
+                            commandOutputBox.Text += "Nije moguce dodati deo u popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
+                            ocistiKontrole();
+                        }
+                        break;
+                }
+
+
+                case "rempart":// addcar nameOfUser nameOfCar || returns status
+                {
+                    if (komandaDelovi[1] == "--help")
+                    {
+                        commandOutputBox.Text += "expecting rempart userID carID fixID partID || returns user id and status \n";
+                        ocistiKontrole();
+                        break;
+                    }
+
+
+                        if (servis.ObrisiDeoZaPopravkuZaAutoZaKorisnika(/*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*fixID*/ Convert.ToInt32(komandaDelovi[3]), /*partID*/ Convert.ToInt32(komandaDelovi[4])))
+                        {
+                            commandOutputBox.Text += "Uspesno obrisan deo za popravku za auto za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
+                            ocistiKontrole();
+                            break;
+                        }
+                        else
+                        {
+                            
+                            commandOutputBox.Text += "Neuspesno obrisan deo za popravku za  za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
+                            ocistiKontrole();
+                        }
+                        break;
+                }
+
+
+
 
 
 
@@ -485,6 +505,42 @@ namespace ProjectOperater
         private void listBoxDeloviZaPopravku_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listBoxDelovi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+                foreach (var VARIABLE in DeloviPovuceni)
+                {
+
+                    try
+                    {
+
+                    if (VARIABLE.nazivDela == listBoxDelovi.SelectedItem.ToString().Split(':')[1])
+                    {
+                        textBox1.Text = VARIABLE.nazivDela;
+                        numericUpDown1.Text = VARIABLE.cena_dela.ToString();
+                        numericUpDown2.Text = VARIABLE.id.ToString();
+
+                    }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+            }
+                DeloviPovuceni = servis.PovuciDelove();
+
+
+        }
+
+        private void buttonSacuvajDeo_Click(object sender, EventArgs e)
+        {
+            int ID = (int)numericUpDown2.Value;
+            double Cena = (Double)numericUpDown1.Value;
+            servis.PromeniCenuZaIDOdDeo(ID, Cena);
+            DeloviPovuceni = servis.PovuciDelove();
+            int a = 2;
         }
     }
 }

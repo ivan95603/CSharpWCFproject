@@ -119,6 +119,18 @@ namespace ProjectOperater.OperaterServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiPopravkuZaAutoZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiPopravkuZaAutoZaKorisnikaResponse")]
         System.Threading.Tasks.Task<bool> ObrisiPopravkuZaAutoZaKorisnikaAsync(int userID, int carID, int popravkaID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/DodajDeoZaPopravkuZaAutoZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/DodajDeoZaPopravkuZaAutoZaKorisnikaResponse")]
+        bool DodajDeoZaPopravkuZaAutoZaKorisnika(int userID, int carID, int fixID, int partID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/DodajDeoZaPopravkuZaAutoZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/DodajDeoZaPopravkuZaAutoZaKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> DodajDeoZaPopravkuZaAutoZaKorisnikaAsync(int userID, int carID, int fixID, int partID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiDeoZaPopravkuZaAutoZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiDeoZaPopravkuZaAutoZaKorisnikaResponse")]
+        bool ObrisiDeoZaPopravkuZaAutoZaKorisnika(int userID, int carID, int fixID, int partID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOperaterServis/ObrisiDeoZaPopravkuZaAutoZaKorisnika", ReplyAction="http://tempuri.org/IOperaterServis/ObrisiDeoZaPopravkuZaAutoZaKorisnikaResponse")]
+        System.Threading.Tasks.Task<bool> ObrisiDeoZaPopravkuZaAutoZaKorisnikaAsync(int userID, int carID, int fixID, int partID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -274,6 +286,22 @@ namespace ProjectOperater.OperaterServis {
         
         public System.Threading.Tasks.Task<bool> ObrisiPopravkuZaAutoZaKorisnikaAsync(int userID, int carID, int popravkaID) {
             return base.Channel.ObrisiPopravkuZaAutoZaKorisnikaAsync(userID, carID, popravkaID);
+        }
+        
+        public bool DodajDeoZaPopravkuZaAutoZaKorisnika(int userID, int carID, int fixID, int partID) {
+            return base.Channel.DodajDeoZaPopravkuZaAutoZaKorisnika(userID, carID, fixID, partID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DodajDeoZaPopravkuZaAutoZaKorisnikaAsync(int userID, int carID, int fixID, int partID) {
+            return base.Channel.DodajDeoZaPopravkuZaAutoZaKorisnikaAsync(userID, carID, fixID, partID);
+        }
+        
+        public bool ObrisiDeoZaPopravkuZaAutoZaKorisnika(int userID, int carID, int fixID, int partID) {
+            return base.Channel.ObrisiDeoZaPopravkuZaAutoZaKorisnika(userID, carID, fixID, partID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ObrisiDeoZaPopravkuZaAutoZaKorisnikaAsync(int userID, int carID, int fixID, int partID) {
+            return base.Channel.ObrisiDeoZaPopravkuZaAutoZaKorisnikaAsync(userID, carID, fixID, partID);
         }
     }
 }

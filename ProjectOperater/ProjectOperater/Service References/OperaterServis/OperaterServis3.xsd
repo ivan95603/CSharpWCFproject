@@ -228,4 +228,38 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DodajDeoZaPopravkuZaAutoZaKorisnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="carID" type="xs:int" />
+        <xs:element minOccurs="0" name="fixID" type="xs:int" />
+        <xs:element minOccurs="0" name="partID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajDeoZaPopravkuZaAutoZaKorisnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DodajDeoZaPopravkuZaAutoZaKorisnikaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObrisiDeoZaPopravkuZaAutoZaKorisnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="carID" type="xs:int" />
+        <xs:element minOccurs="0" name="fixID" type="xs:int" />
+        <xs:element minOccurs="0" name="partID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObrisiDeoZaPopravkuZaAutoZaKorisnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObrisiDeoZaPopravkuZaAutoZaKorisnikaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
