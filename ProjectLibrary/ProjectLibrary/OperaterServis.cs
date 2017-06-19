@@ -257,7 +257,6 @@ namespace ProjectLibrary
 
         public bool DodajDeoZaPopravkuZaAutoZaKorisnika(int userID, int carID, int fixID, int partID)
         {
-            bool postojiID = false;
 
             Korisnik a = Korisnik.korisnici.Find(korisnik => korisnik.idKorisnika == userID);
 
@@ -280,7 +279,19 @@ namespace ProjectLibrary
 
         public bool ObrisiDeoZaPopravkuZaAutoZaKorisnika(int userID, int carID, int fixID, int partID)
         {
-            throw new NotImplementedException();
+
+            Korisnik a = Korisnik.korisnici.Find(korisnik => korisnik.idKorisnika == userID);
+
+            Automobil b = a.Automobili.Find(automobil => automobil.id_automobil == carID);
+
+            Popravka c = b.popravke.Find(popravka => popravka.id_popravke == fixID);
+
+            if ((a != null) && (b != null) && (c != null) && (Deo.izaberiDeo(partID) != null))
+            {
+               return (Korisnik.korisnici.Find(korisnik => korisnik.idKorisnika == userID).Automobili.Find(automobil => automobil.id_automobil == carID).popravke.Find(popravka => popravka.id_popravke == fixID)).delovi.Remove(   (Korisnik.korisnici.Find(korisnik => korisnik.idKorisnika == userID).Automobili.Find(automobil => automobil.id_automobil == carID).popravke.Find(popravka => popravka.id_popravke == fixID)).delovi.Find(deo => deo.id == partID) );
+            }
+
+            return false;
         }
     }
 }

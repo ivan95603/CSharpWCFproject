@@ -61,17 +61,6 @@ namespace ProjectOperater
 
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             //*/*/*/*/*/*/*/*/*/**********
@@ -88,7 +77,17 @@ namespace ProjectOperater
             }
             catch (Exception exception)
             {
-                selektovan = listBoxKorisnici.SelectedItem.ToString();
+
+                try
+                {
+                    selektovan = listBoxKorisnici.SelectedItem.ToString();
+
+                }
+                catch (Exception)
+                {
+
+                   
+                } 
             }
 
             
@@ -542,5 +541,6 @@ namespace ProjectOperater
             DeloviPovuceni = servis.PovuciDelove();
             int a = 2;
         }
+
     }
 }
