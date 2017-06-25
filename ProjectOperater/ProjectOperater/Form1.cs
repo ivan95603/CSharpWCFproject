@@ -374,6 +374,13 @@ namespace ProjectOperater
                         break;
                     }
 
+                    if ((Convert.ToInt32(komandaDelovi[3]) > 2) || (Convert.ToInt32(komandaDelovi[3]) <0))
+                    {
+                        commandOutputBox.Text += "Nije moguce dodati popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
+                        ocistiKontrole();
+                        break;
+                    }
+
                     if (servis.DodajPopravkuZaAutoZaKorisnika(/*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*statusID*/ Convert.ToInt32(komandaDelovi[3])))
                     {
                         commandOutputBox.Text += "Uspesno dodata popravka za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
