@@ -10,7 +10,7 @@ namespace ProjectLibrary
     {
         public string GetData(string value)
         {
-            return "IVAN";
+            return "IVAN" + value;
         }
     }
 }

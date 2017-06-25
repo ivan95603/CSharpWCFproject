@@ -61,7 +61,7 @@ namespace ProjectServer
             //Debug.WriteLine("IVANVNASJVALSKDJLKASJDLKSA");
 
             // Create a WSHttpBinding and set its property values. 
-            /*  WSHttpBinding binding = new WSHttpBinding();
+              WSHttpBinding binding = new WSHttpBinding();
               binding.Name = "binding1";
               binding.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
               binding.Security.Mode = SecurityMode.Message;
@@ -97,35 +97,15 @@ namespace ProjectServer
 
             serviceHost.Open();
 
-    */
+    
 
 
 
-            /* ServiceHost host = new ServiceHost(typeof(WebClientServis),
-                 new Uri("http://localhost:8080/webservis"));
-             host.Open();
-             */
-
-            //  using (var serviceHost = new WebServiceHost(typeof(WebClientServis)))
-            //  {
-            //     serviceHost.Open();
-
-            /* Console.WriteLine("WCF REST JSON service is running...");
-             Console.ReadLine();*/
-
-            //serviceHost.Close();
-            //  }
 
 
-            Uri baseAddress = new Uri("http://localhost:8080/ika");
-            var serviceHost = new WebServiceHost(typeof(WebClientServis), baseAddress);
-
-          /*  ServiceEndpoint endpoint = serviceHost.AddServiceEndpoint(
-                typeof(IWebClientServis),
-                new WebHttpBinding(),
-                "http://localhost:8080/ika");
-            serviceHost.AddServiceEndpoint(endpoint);*/
-            serviceHost.Open();
+            Uri baseAddressREST = new Uri("http://localhost:8080/ika");
+            var serviceHostREST = new WebServiceHost(typeof(WebClientServis), baseAddressREST);
+            serviceHostREST.Open();
 
         }
 
