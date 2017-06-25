@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ad840fdd-ad45-486f-b886-7a276ec87408" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8734/MeteoServis/Administrator" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Administrator.xsd" MetadataType="Schema" ID="fbbf9eba-d55a-460d-803e-316fbfdd14d4" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?xsd=xsd4" />
+    <MetadataFile FileName="Administrator1.xsd" MetadataType="Schema" ID="1b524570-edec-4f96-9c47-ed00783d024e" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?xsd=xsd1" />
+    <MetadataFile FileName="Administrator.disco" MetadataType="Disco" ID="cd245738-fe5b-45d8-b519-4da704a5e0e6" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?disco" />
+    <MetadataFile FileName="Administrator2.xsd" MetadataType="Schema" ID="dd3ae57c-9fab-4d5b-8f9f-b78f39805031" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?xsd=xsd2" />
+    <MetadataFile FileName="Administrator3.xsd" MetadataType="Schema" ID="4d8c0ba6-430b-45c2-b0b1-394e787678b1" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?xsd=xsd3" />
+    <MetadataFile FileName="AdministratorServis.wsdl" MetadataType="Wsdl" ID="0cbe1a78-6ae5-45e2-8a2b-4db738ba27c6" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?wsdl" />
+    <MetadataFile FileName="Administrator4.xsd" MetadataType="Schema" ID="6bbaa0ec-401a-4d4b-867a-19f95be690ec" SourceId="1" SourceUrl="http://localhost:8734/MeteoServis/Administrator?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

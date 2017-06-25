@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorServis.cs" />
     <Compile Include="Automobil.cs" />
     <Compile Include="Deo.cs" />
+    <Compile Include="IAdministratorServis.cs" />
     <Compile Include="INormalClientServis.cs" />
     <Compile Include="IOperaterServis.cs" />
     <Compile Include="IWebClientServis.cs" />

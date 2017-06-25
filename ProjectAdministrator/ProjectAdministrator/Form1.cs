@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectAdministrator.AdministratorServiceReference;
 using ProjectLibrary;
 
 
-namespace ProjectOperater
+namespace ProjectAdministrator
 {
     public partial class Form1 : Form
     {
-        OperaterServis.OperaterServisClient servis = new OperaterServis.OperaterServisClient();
+        AdministratorServisClient servis = new AdministratorServisClient();
         List<Deo> DeloviPovuceni;
         List<Korisnik> KorisniciPovuceni;
 
@@ -23,45 +24,13 @@ namespace ProjectOperater
         Automobil izabraniAutomobil;
         Popravka izabranaPopravka;
 
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {    
-            
-
-        }
-
-        private void butLogin_Click(object sender, EventArgs e)
-        {
-            
-            Debug.WriteLine(servis.Login("ivan", "pass"));
-
-            List<status> popravkeList = /*servis.StatusPopravkiNaAutu();*/ servis.StatusPopravkiNaAutu().ToList();
-            double cenaTroskova = servis.SumaTroskovaNaAutuZaKorisnika();
-
-
-            foreach (var VARIABLE in popravkeList)
-            {
-                listBox1.Items.Add("Status popravke: " + VARIABLE.ToString());
-            }
-            listBox1.Items.Add("Ukupni troskovi za auto: " + cenaTroskova.ToString());
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ocistiKontrole();
-        }
-
-        private void Delovi_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxKorisnici_SelectedIndexChanged(object sender, EventArgs e)
         {
             //*/*/*/*/*/*/*/*/*/**********
 
@@ -86,11 +55,11 @@ namespace ProjectOperater
                 catch (Exception)
                 {
 
-                   
-                } 
+
+                }
             }
 
-            
+
 
             foreach (var Korisnici in KorisniciPovuceni)
             {
@@ -106,7 +75,7 @@ namespace ProjectOperater
                     {
                         listBoxAutomobili.Items.Add(Auti.id_automobil.ToString() + ':' + Auti.podaci);
                     }
-                    
+
                 }
 
 
@@ -115,9 +84,9 @@ namespace ProjectOperater
             DeloviPovuceni = servis.PovuciDelove();
         }
 
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxAutomobili_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
             listBoxPopravke.Items.Clear();
             listBoxDeloviZaPopravku.Items.Clear();
             foreach (var AutomobilFor in izabraniKorisnik.Automobili)
@@ -144,7 +113,7 @@ namespace ProjectOperater
                 catch (Exception)
                 {
 
-                    
+
                 }
 
             }
@@ -161,10 +130,10 @@ namespace ProjectOperater
                 {
                     var selektovan = listBoxPopravke.SelectedItem.ToString().Split(':')[0];
                     var idPopravkeString = VARIABLE.id_popravke.ToString();
-                     if (selektovan == idPopravkeString)
-                     {
-                    Debug.WriteLine(VARIABLE.delovi[0]);
-                    //listBoxDeloviZaPopravku.Items.Add(VARIABLE.id_popravke + VARIABLE.deloviZaPoravku[0].nazivDela);
+                    if (selektovan == idPopravkeString)
+                    {
+                        Debug.WriteLine(VARIABLE.delovi[0]);
+                       // listBoxDeloviZaPopravku.Items.Add(VARIABLE.id_popravke + VARIABLE.delovi[0].nazivDela);///////////////////*******************************//////
                         foreach (var delovi in VARIABLE.delovi)
                         {
                             listBoxDeloviZaPopravku.Items.Add(delovi.id + ":" + delovi.nazivDela);
@@ -175,13 +144,33 @@ namespace ProjectOperater
             catch (Exception)
             {
 
-                
+
             }
+        }
+
+        private void commandBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void CommandHelp()
+        {
+            commandOutputBox.Text += "Moguce komande: \n";
+            commandOutputBox.Text += "help \n";
+            commandOutputBox.Text += "adduser \n";
+            commandOutputBox.Text += "deluser \n";
+            commandOutputBox.Text += "addcar \n";
+            commandOutputBox.Text += "delcar \n";
+            commandOutputBox.Text += "addfix \n";
+            commandOutputBox.Text += "delfix \n";
+            commandOutputBox.Text += "addpart \n";
+            commandOutputBox.Text += "delpart \n";
+            commandOutputBox.Text += "For command help use commandName --help \n";
+
         }
 
         void ocistiKontrole()
         {
-            listBox1.Items.Clear();
             listBoxDelovi.Items.Clear();
             listBoxKorisnici.Items.Clear();
             listBoxAutomobili.Items.Clear();
@@ -218,22 +207,6 @@ namespace ProjectOperater
 
         }
 
-        void CommandHelp()
-        {
-            commandOutputBox.Text += "Moguce komande: \n";
-            commandOutputBox.Text += "help \n";
-            commandOutputBox.Text += "adduser \n";
-            commandOutputBox.Text += "deluser \n";
-            commandOutputBox.Text += "addcar \n";
-            commandOutputBox.Text += "delcar \n";
-            commandOutputBox.Text += "addfix \n";
-            commandOutputBox.Text += "delfix \n";
-            commandOutputBox.Text += "addpart \n";
-            commandOutputBox.Text += "delpart \n";
-            commandOutputBox.Text += "For command help use commandName --help \n";
-
-        }
-
         void CommandExecute()
         {
 
@@ -262,7 +235,8 @@ namespace ProjectOperater
                 {
                     if (komandaDelovi[1] == "--help")
                     {
-                        commandOutputBox.Text += "expecting  adduser nameOfUser password || returns user id and status \n";
+                        commandOutputBox.Text +=
+                            "expecting  adduser nameOfUser password || returns user id and status \n";
                         break;
                     }
 
@@ -280,14 +254,15 @@ namespace ProjectOperater
                     }
                     else
                     {
-                        commandOutputBox.Text += "Nije moguce dodati korisnika  " + komandaDelovi[1] + " moguce da vec postoji\n";
+                        commandOutputBox.Text += "Nije moguce dodati korisnika  " + komandaDelovi[1] +
+                                                 " moguce da vec postoji\n";
                         ocistiKontrole();
                     }
 
                     break; /* optional */
                 }
 
-                case "deluser": // deluser nameOfUser || returns user id and status
+                case "remuser": // deluser nameOfUser || returns user id and status
                 {
                     if (komandaDelovi[1] == "--help")
                     {
@@ -301,22 +276,22 @@ namespace ProjectOperater
                     if (servis.ObrisiKorisnika(komandaDelovi[1]))
                     {
                         commandOutputBox.Text += "Uspesno obrisan korisnik " + komandaDelovi[1] + "\n";
-                            ocistiKontrole();
+                        ocistiKontrole();
                         break;
                     }
                     else
                     {
-                        commandOutputBox.Text += "Nije moguce obrisati korisnika  " + komandaDelovi[1] + "\n"; 
+                        commandOutputBox.Text += "Nije moguce obrisati korisnika  " + komandaDelovi[1] + "\n";
                         ocistiKontrole();
                     }
-                    break; 
+                    break;
                 }
 
 
 
 
-                case "addcar":// addcar nameOfUser nameOfCar || returns status
-                { 
+                case "addcar": // addcar nameOfUser nameOfCar || returns status
+                {
                     if (komandaDelovi[1] == "--help")
                     {
                         commandOutputBox.Text += "expecting addcar userID nameOfCar || returns user id and status \n";
@@ -326,20 +301,22 @@ namespace ProjectOperater
 
                     if (servis.DodajAutomobilZaKorisnikaID(Convert.ToInt32(komandaDelovi[1]), komandaDelovi[2]))
                     {
-                        commandOutputBox.Text += "Uspesno dodat automobil za korisnika " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2] + "\n";
+                        commandOutputBox.Text += "Uspesno dodat automobil za korisnika " + komandaDelovi[1] +
+                                                 " sa nazivom " + komandaDelovi[2] + "\n";
                         ocistiKontrole();
                         break;
                     }
                     else
                     {
-                        commandOutputBox.Text += "Nije moguce dodati automobil za korisnika  " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2] + "\n";
+                        commandOutputBox.Text += "Nije moguce dodati automobil za korisnika  " + komandaDelovi[1] +
+                                                 " sa nazivom " + komandaDelovi[2] + "\n";
                         ocistiKontrole();
                     }
-                    break; 
-               }
+                    break;
+                }
 
 
-                case "remcar":// addcar nameOfUser nameOfCar || returns status
+                case "remcar": // addcar nameOfUser nameOfCar || returns status
                 {
                     if (komandaDelovi[1] == "--help")
                     {
@@ -348,15 +325,18 @@ namespace ProjectOperater
                         break;
                     }
 
-                    if (servis.ObrisiAutomobilZaKorisnikaID(Convert.ToInt32(komandaDelovi[1]), Convert.ToInt32(komandaDelovi[2])))
+                    if (servis.ObrisiAutomobilZaKorisnikaID(Convert.ToInt32(komandaDelovi[1]),
+                        Convert.ToInt32(komandaDelovi[2])))
                     {
-                        commandOutputBox.Text += "Uspesno obrisan automobil za korisnika " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2] + "\n";
+                        commandOutputBox.Text += "Uspesno obrisan automobil za korisnika " + komandaDelovi[1] +
+                                                 " sa nazivom " + komandaDelovi[2] + "\n";
                         ocistiKontrole();
                         break;
                     }
                     else
                     {
-                        commandOutputBox.Text += "Nije moguce obrisati automobil za korisnika  " + komandaDelovi[1] + " sa nazivom " + komandaDelovi[2] + "\n";
+                        commandOutputBox.Text += "Nije moguce obrisati automobil za korisnika  " + komandaDelovi[1] +
+                                                 " sa nazivom " + komandaDelovi[2] + "\n";
                         ocistiKontrole();
                     }
                     break;
@@ -365,7 +345,7 @@ namespace ProjectOperater
 
 
 
-                case "addfix":// addcar nameOfUser nameOfCar || returns status
+                case "addfix": // addcar nameOfUser nameOfCar || returns status
                 {
                     if (komandaDelovi[1] == "--help")
                     {
@@ -374,29 +354,33 @@ namespace ProjectOperater
                         break;
                     }
 
-                    if ((Convert.ToInt32(komandaDelovi[3]) > 2) || (Convert.ToInt32(komandaDelovi[3]) <0))
+                    if ((Convert.ToInt32(komandaDelovi[3]) > 2) || (Convert.ToInt32(komandaDelovi[3]) < 0))
                     {
-                        commandOutputBox.Text += "Nije moguce dodati popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
+                        commandOutputBox.Text += "Nije moguce dodati popravku za automobil" + komandaDelovi[2] +
+                                                 "za korisnika " + komandaDelovi[0] + "\n";
                         ocistiKontrole();
                         break;
                     }
 
-                    if (servis.DodajPopravkuZaAutoZaKorisnika(/*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*statusID*/ Convert.ToInt32(komandaDelovi[3])))
+                    if (servis.DodajPopravkuZaAutoZaKorisnika( /*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/
+                        Convert.ToInt32(komandaDelovi[2]), /*statusID*/ Convert.ToInt32(komandaDelovi[3])))
                     {
-                        commandOutputBox.Text += "Uspesno dodata popravka za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
+                        commandOutputBox.Text += "Uspesno dodata popravka za automobil" + komandaDelovi[2] +
+                                                 "za korisnika " + komandaDelovi[0] + "\n";
                         ocistiKontrole();
                         break;
                     }
                     else
                     {
-                        commandOutputBox.Text += "Nije moguce dodati popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
+                        commandOutputBox.Text += "Nije moguce dodati popravku za automobil" + komandaDelovi[2] +
+                                                 "za korisnika " + komandaDelovi[0] + "\n";
                         ocistiKontrole();
                     }
                     break;
                 }
 
 
-                case "remfix":// addcar nameOfUser nameOfCar || returns status
+                case "remfix": // addcar nameOfUser nameOfCar || returns status
                 {
                     if (komandaDelovi[1] == "--help")
                     {
@@ -405,17 +389,22 @@ namespace ProjectOperater
                         break;
                     }
 
-                                       
-                    if (servis.ObrisiPopravkuZaAutoZaKorisnika(Convert.ToInt32(komandaDelovi[1]), Convert.ToInt32(komandaDelovi[2]), Convert.ToInt32(komandaDelovi[3])))
+
+                    if (servis.ObrisiPopravkuZaAutoZaKorisnika(Convert.ToInt32(komandaDelovi[1]),
+                        Convert.ToInt32(komandaDelovi[2]), Convert.ToInt32(komandaDelovi[3])))
                     {
-                        commandOutputBox.Text += "Uspesno obrisana popravka za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
+                        commandOutputBox.Text += "Uspesno obrisana popravka za korisnika " + komandaDelovi[1] +
+                                                 " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] +
+                                                 "\n";
                         ocistiKontrole();
                         break;
                     }
                     else
                     {
-                        commandOutputBox.Text += "Neuspesno obrisana popravka za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
-                            ocistiKontrole();
+                        commandOutputBox.Text += "Neuspesno obrisana popravka za korisnika " + komandaDelovi[1] +
+                                                 " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] +
+                                                 "\n";
+                        ocistiKontrole();
                     }
                     break;
                 }
@@ -423,53 +412,65 @@ namespace ProjectOperater
 
 
 
-                case "addpart":// addcar nameOfUser nameOfCar || returns status
+                case "addpart": // addcar nameOfUser nameOfCar || returns status
                 {
                     if (komandaDelovi[1] == "--help")
                     {
-                        commandOutputBox.Text += "expecting addpart userID carID popravkaID deoID || returns user id and status \n";
+                        commandOutputBox.Text +=
+                            "expecting addpart userID carID popravkaID deoID || returns user id and status \n";
                         ocistiKontrole();
                         break;
                     }
 
-                        if (servis.DodajDeoZaPopravkuZaAutoZaKorisnika(/*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*fixID*/ Convert.ToInt32(komandaDelovi[3]), /*partID*/ Convert.ToInt32(komandaDelovi[4])))
-                        {
-                            commandOutputBox.Text += "Uspesno dodat deo za popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
-                            ocistiKontrole();
-                            break;
-                        }
-                        else
-                        {
-                            commandOutputBox.Text += "Nije moguce dodati deo u popravku za automobil" + komandaDelovi[2] + "za korisnika " + komandaDelovi[0] + "\n";
-                            ocistiKontrole();
-                        }
+                    if (servis.DodajDeoZaPopravkuZaAutoZaKorisnika( /*UserID*/
+                        Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*fixID*/
+                        Convert.ToInt32(komandaDelovi[3]), /*partID*/ Convert.ToInt32(komandaDelovi[4])))
+                    {
+                        commandOutputBox.Text += "Uspesno dodat deo za popravku za automobil" + komandaDelovi[2] +
+                                                 "za korisnika " + komandaDelovi[0] + "\n";
+                        ocistiKontrole();
                         break;
+                    }
+                    else
+                    {
+                        commandOutputBox.Text += "Nije moguce dodati deo u popravku za automobil" + komandaDelovi[2] +
+                                                 "za korisnika " + komandaDelovi[0] + "\n";
+                        ocistiKontrole();
+                    }
+                    break;
                 }
 
 
-                case "rempart":// addcar nameOfUser nameOfCar || returns status
+                case "rempart": // addcar nameOfUser nameOfCar || returns status
                 {
                     if (komandaDelovi[1] == "--help")
                     {
-                        commandOutputBox.Text += "expecting rempart userID carID fixID partID || returns user id and status \n";
+                        commandOutputBox.Text +=
+                            "expecting rempart userID carID fixID partID || returns user id and status \n";
                         ocistiKontrole();
                         break;
                     }
 
 
-                        if (servis.ObrisiDeoZaPopravkuZaAutoZaKorisnika(/*UserID*/Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*fixID*/ Convert.ToInt32(komandaDelovi[3]), /*partID*/ Convert.ToInt32(komandaDelovi[4])))
-                        {
-                            commandOutputBox.Text += "Uspesno obrisan deo za popravku za auto za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
-                            ocistiKontrole();
-                            break;
-                        }
-                        else
-                        {
-                            
-                            commandOutputBox.Text += "Neuspesno obrisan deo za popravku za  za korisnika " + komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " + komandaDelovi[3] + "\n";
-                            ocistiKontrole();
-                        }
+                    if (servis.ObrisiDeoZaPopravkuZaAutoZaKorisnika( /*UserID*/
+                        Convert.ToInt32(komandaDelovi[1]), /*CarID*/Convert.ToInt32(komandaDelovi[2]), /*fixID*/
+                        Convert.ToInt32(komandaDelovi[3]), /*partID*/ Convert.ToInt32(komandaDelovi[4])))
+                    {
+                        commandOutputBox.Text += "Uspesno obrisan deo za popravku za auto za korisnika " +
+                                                 komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " +
+                                                 komandaDelovi[3] + "\n";
+                        ocistiKontrole();
                         break;
+                    }
+                    else
+                    {
+
+                        commandOutputBox.Text += "Neuspesno obrisan deo za popravku za  za korisnika " +
+                                                 komandaDelovi[1] + " automobil " + komandaDelovi[2] + " idPopravke " +
+                                                 komandaDelovi[3] + "\n";
+                        ocistiKontrole();
+                    }
+                    break;
                 }
 
 
@@ -483,20 +484,10 @@ namespace ProjectOperater
                 default:
                 {
                     commandOutputBox.Text += "Pogresan format komande molimo konsultujte help\n";
-                        break;
+                    break;
                 } /* Optional */
                 //statement(s);
             }
-
-
-        }
-
-
-        private void buttonExecute_Click(object sender, EventArgs e)
-        {
-
-            CommandExecute();    
-        
         }
 
         private void commandBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -508,19 +499,14 @@ namespace ProjectOperater
             }
         }
 
-        private void listBoxDeloviZaPopravku_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void listBoxDelovi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-                foreach (var VARIABLE in DeloviPovuceni)
-                {
+            foreach (var VARIABLE in DeloviPovuceni)
+            {
 
-                    try
-                    {
+                try
+                {
 
                     if (VARIABLE.nazivDela == listBoxDelovi.SelectedItem.ToString().Split(':')[1])
                     {
@@ -529,14 +515,13 @@ namespace ProjectOperater
                         numericUpDown2.Text = VARIABLE.id.ToString();
 
                     }
-                    }
-                    catch (Exception)
-                    {
+                }
+                catch (Exception)
+                {
 
-                    }
+                }
             }
-                DeloviPovuceni = servis.PovuciDelove();
-
+            DeloviPovuceni = servis.PovuciDelove();
 
         }
 
@@ -549,14 +534,9 @@ namespace ProjectOperater
             int a = 2;
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void commandBox_TextChanged(object sender, EventArgs e)
-        {
-
+            ocistiKontrole();
         }
     }
 }

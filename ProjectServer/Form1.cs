@@ -58,7 +58,7 @@ namespace ProjectServer
         {
             
               Init();
-
+            
             //Operater servis
             // Create a WSHttpBinding and set its property values. 
               WSHttpBinding binding = new WSHttpBinding();
@@ -110,8 +110,6 @@ namespace ProjectServer
 
 
             //Normal client
-
-
             // Create a WSHttpBinding and set its property values. 
             WSHttpBinding bindingNormalClient = new WSHttpBinding();
             bindingNormalClient.Name = "binding1";
@@ -148,6 +146,48 @@ namespace ProjectServer
             );
 
             serviceHostNormalClient.Open();
+
+            
+
+
+
+            //Administrator client
+            // Create a WSHttpBinding and set its property values. 
+            WSHttpBinding bindingAdministrator = new WSHttpBinding();
+            bindingAdministrator.Name = "binding1";
+            bindingAdministrator.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
+            bindingAdministrator.Security.Mode = SecurityMode.Message;
+            bindingAdministrator.ReliableSession.Enabled = true;
+            bindingAdministrator.TransactionFlow = false;
+            //Specify a base address for the service endpoint. 
+            Uri baseAddressAdministrator = new Uri(@"http://localhost:8734/MeteoServis/Administrator");
+            // Create a ServiceHost for the CalculatorService type 
+            // and provide it with a base address. 
+            ServiceHost serviceHostAdministrator = new ServiceHost(typeof(AdministratorServis), baseAddressAdministrator);
+            serviceHostAdministrator.AddServiceEndpoint(typeof(IAdministratorServis), bindingAdministrator, baseAddressAdministrator);
+            // Open the ServiceHostBase to create listeners 
+            // and start listening for messages. 
+
+            ServiceMetadataBehavior smbAdministrator = new ServiceMetadataBehavior();
+            smbAdministrator.HttpGetEnabled = true;
+            smbAdministrator.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            serviceHostAdministrator.Description.Behaviors.Add(smbAdministrator);
+
+
+            serviceHostAdministrator.Description.Behaviors.Remove(
+                typeof(ServiceDebugBehavior));
+            serviceHostAdministrator.Description.Behaviors.Add(
+                new ServiceDebugBehavior { IncludeExceptionDetailInFaults = true });
+
+
+            // Add MEX endpoint
+            serviceHostAdministrator.AddServiceEndpoint(
+                ServiceMetadataBehavior.MexContractName,
+                MetadataExchangeBindings.CreateMexHttpBinding(),
+                "mex"
+            );
+
+            serviceHostAdministrator.Open();
 
 
 

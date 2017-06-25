@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectWebClient", "..\Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectNormalClient", "..\ProjectNormalClient\ProjectNormalClient\ProjectNormalClient.csproj", "{A8FC0420-ADC6-413E-BD13-703B69CB1D2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAdministrator", "ProjectAdministrator\ProjectAdministrator\ProjectAdministrator.csproj", "{F1DFEC87-2F20-4037-9C4B-5A2C0514A5DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{A8FC0420-ADC6-413E-BD13-703B69CB1D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8FC0420-ADC6-413E-BD13-703B69CB1D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8FC0420-ADC6-413E-BD13-703B69CB1D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1DFEC87-2F20-4037-9C4B-5A2C0514A5DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1DFEC87-2F20-4037-9C4B-5A2C0514A5DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1DFEC87-2F20-4037-9C4B-5A2C0514A5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1DFEC87-2F20-4037-9C4B-5A2C0514A5DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

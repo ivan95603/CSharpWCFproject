@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ProjectLibrary" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProjectLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8734/MeteoServis/Administrator?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfstatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="status" type="tns:status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstatus" nillable="true" type="tns:ArrayOfstatus" />
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="nijeStigaoNaRed" />
+      <xs:enumeration value="popravljaSe" />
+      <xs:enumeration value="popravljen" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="status" nillable="true" type="tns:status" />
+  <xs:complexType name="Deo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cena_dela" type="xs:double" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="nazivDela" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Deo" nillable="true" type="tns:Deo" />
+  <xs:complexType name="ArrayOfKorisnik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Korisnik" nillable="true" type="tns:Korisnik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKorisnik" nillable="true" type="tns:ArrayOfKorisnik" />
+  <xs:complexType name="Korisnik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Automobili" nillable="true" type="tns:ArrayOfAutomobil" />
+      <xs:element minOccurs="0" name="idKorisnika" type="xs:int" />
+      <xs:element minOccurs="0" name="korisnicko_ime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lozinka" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Korisnik" nillable="true" type="tns:Korisnik" />
+  <xs:complexType name="ArrayOfAutomobil">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Automobil" nillable="true" type="tns:Automobil" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAutomobil" nillable="true" type="tns:ArrayOfAutomobil" />
+  <xs:complexType name="Automobil">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cena_popravke" type="xs:double" />
+      <xs:element minOccurs="0" name="id_automobil" type="xs:int" />
+      <xs:element minOccurs="0" name="id_popravke" type="xs:int" />
+      <xs:element minOccurs="0" name="podaci" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="popravke" nillable="true" type="tns:ArrayOfPopravka" />
+      <xs:element minOccurs="0" name="sumaTroskovaNaAutu" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Automobil" nillable="true" type="tns:Automobil" />
+  <xs:complexType name="ArrayOfPopravka">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Popravka" nillable="true" type="tns:Popravka" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPopravka" nillable="true" type="tns:ArrayOfPopravka" />
+  <xs:complexType name="Popravka">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="delovi" nillable="true" type="tns:ArrayOfDeo" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="deloviIDs" nillable="true" type="q1:ArrayOfint" />
+      <xs:element minOccurs="0" name="deloviZaPoravku" nillable="true" type="tns:ArrayOfDeo" />
+      <xs:element minOccurs="0" name="id_popravke" type="xs:int" />
+      <xs:element minOccurs="0" name="statusPopravke" type="tns:status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Popravka" nillable="true" type="tns:Popravka" />
+  <xs:complexType name="ArrayOfDeo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Deo" nillable="true" type="tns:Deo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeo" nillable="true" type="tns:ArrayOfDeo" />
+</xs:schema>

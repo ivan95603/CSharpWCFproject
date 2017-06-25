@@ -316,6 +316,7 @@
             this.commandBox.Name = "commandBox";
             this.commandBox.Size = new System.Drawing.Size(453, 20);
             this.commandBox.TabIndex = 16;
+            this.commandBox.TextChanged += new System.EventHandler(this.commandBox_TextChanged);
             this.commandBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.commandBox_KeyPress);
             // 
             // listBoxDeloviZaPopravku
