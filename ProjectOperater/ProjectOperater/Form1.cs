@@ -549,5 +549,9 @@ namespace ProjectOperater
             int a = 2;
         }
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

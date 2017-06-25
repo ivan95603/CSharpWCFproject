@@ -49,7 +49,7 @@ namespace ProjectLibrary
         [DataMember]
         public string korisnicko_ime;
         [DataMember]
-        string lozinka;
+        public string lozinka;
 
         
 

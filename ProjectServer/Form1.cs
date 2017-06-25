@@ -58,8 +58,8 @@ namespace ProjectServer
         {
             
               Init();
-            //Debug.WriteLine("IVANVNASJVALSKDJLKASJDLKSA");
 
+            //Operater servis
             // Create a WSHttpBinding and set its property values. 
               WSHttpBinding binding = new WSHttpBinding();
               binding.Name = "binding1";
@@ -102,10 +102,55 @@ namespace ProjectServer
 
 
 
+            //Web client
+            Uri baseAddressREST = new Uri("http://localhost:8080/webklientrest");
+            WebServiceHost serviceHostREST = new WebServiceHost(typeof(WebClientServis), baseAddressREST);
 
-            Uri baseAddressREST = new Uri("http://localhost:8080/ika");
-            var serviceHostREST = new WebServiceHost(typeof(WebClientServis), baseAddressREST);
             serviceHostREST.Open();
+
+
+            //Normal client
+
+
+            // Create a WSHttpBinding and set its property values. 
+            WSHttpBinding bindingNormalClient = new WSHttpBinding();
+            bindingNormalClient.Name = "binding1";
+            bindingNormalClient.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
+            bindingNormalClient.Security.Mode = SecurityMode.Message;
+            bindingNormalClient.ReliableSession.Enabled = true;
+            bindingNormalClient.TransactionFlow = false;
+            //Specify a base address for the service endpoint. 
+            Uri baseAddressNormalClient = new Uri(@"http://localhost:8734/MeteoServis/NormalClient");
+            // Create a ServiceHost for the CalculatorService type 
+            // and provide it with a base address. 
+            ServiceHost serviceHostNormalClient = new ServiceHost(typeof(NormalClientServis), baseAddressNormalClient);
+            serviceHostNormalClient.AddServiceEndpoint(typeof(INormalClientServis), bindingNormalClient, baseAddressNormalClient);
+            // Open the ServiceHostBase to create listeners 
+            // and start listening for messages. 
+
+            ServiceMetadataBehavior smbNormalClient = new ServiceMetadataBehavior();
+            smbNormalClient.HttpGetEnabled = true;
+            smbNormalClient.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            serviceHostNormalClient.Description.Behaviors.Add(smbNormalClient);
+
+
+            serviceHostNormalClient.Description.Behaviors.Remove(
+                typeof(ServiceDebugBehavior));
+            serviceHostNormalClient.Description.Behaviors.Add(
+                new ServiceDebugBehavior { IncludeExceptionDetailInFaults = true });
+
+
+            // Add MEX endpoint
+            serviceHostNormalClient.AddServiceEndpoint(
+                ServiceMetadataBehavior.MexContractName,
+                MetadataExchangeBindings.CreateMexHttpBinding(),
+                "mex"
+            );
+
+            serviceHostNormalClient.Open();
+
+
+
 
         }
 
